@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QBSEMS | Nurse Console</title>
+
+    <link rel="stylesheet" href="Console Nurse.css">
+</head>
+
+<body>
+
+    <!-- =================================
+         TOP HEADER
+    ================================== -->
+
+    <header class="top-header">
+
+        <div class="brand">
+
+            <div class="logo-container">
+                <img src="ctulogo(2).jpg"
+                     alt="CTU Ginatilan">
+            </div>
+
+            <div class="brand-text">
+                <h2>CTU – Ginatilan</h2>
+                <p>Extension Campus · School Enrollment System</p>
+            </div>
+
+        </div>
+
+
+        <div class="top-actions">
+
+            <!-- DATE AND TIME -->
+            <span class="date-time" id="dateTime"></span>
+
+
+            <!-- NOTIFICATION -->
+            <div class="header-menu">
+
+                <button class="icon-button"
+                        id="notificationBtn"
+                        type="button"
+                        aria-label="Notifications">
+
+                    <i data-lucide="bell"></i>
+                    <span class="notification-dot" id="notificationDot"></span>
+
+                </button>
+
+                <div class="dropdown-panel notification-dropdown"
+                    id="notificationPanel"
+                    hidden>
+
+                    <div class="dropdown-header">
+                        <h3>Notifications</h3>
+                        <button type="button" class="clear-notif-btn" id="clearNotifBtn">Mark all read</button>
+                    </div>
+
+                    <div class="notification-list" id="notificationList">
+                        <div class="notif-item unread">
+                            <p><strong>Nurse:</strong> Now serving ticket N-002.</p>
+                            <small>Just now</small>
+                        </div>
+                        <div class="notif-item unread">
+                            <p><strong>Registrar:</strong> New ticket R-004 issued.</p>
+                            <small>5 mins ago</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ADMIN PROFILE -->
+            <div class="header-menu">
+
+                <button class="profile-button"
+                        id="profileBtn"
+                        type="button">
+
+                    <span class="admin-avatar">
+                        <i data-lucide="user-round"></i>
+                    </span>
+
+                    <span class="admin-label">
+                        <strong>Nurse Staff</strong>
+                        <small>Nurse Staff</small>
+                    </span>
+
+                </button>
+
+                <div class="dropdown-panel profile-panel"
+                    id="profilePanel"
+                    hidden>
+
+                    <h3>Nurse Staff</h3>
+                    <p>CTU – Ginatilan</p>
+
+                    <button type="button" id="profileLogout">
+                        Logout
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================
+         MAIN LAYOUT
+    ================================== -->
+
+    <div class="main-layout">
+
+
+        <!-- =================================
+             SIDEBAR
+        ================================== -->
+
+        <aside class="sidebar">
+
+            <nav class="sidebar-nav">
+
+                <a href="Main Dashboard.html" class="nav-link">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Main Dashboard</span>
+                </a>
+
+                <a href="Issue Ticket.html" class="nav-link">
+                    <i data-lucide="ticket"></i>
+                    <span>Issue Ticket</span>
+                </a>
+
+                <a href="Console Nurse.html" class="nav-link active">
+                    <i data-lucide="users-round"></i>
+                    <span>Queue Management</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i data-lucide="clipboard-list"></i>
+                    <span>Medical Requirements</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i data-lucide="chart-no-axes-column"></i>
+                    <span>Reports</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i data-lucide="settings"></i>
+                    <span>Settings</span>
+                </a>
+
+                <a href="#" class="nav-link" id="sidebarLogout">
+                    <i data-lucide="log-out"></i>
+                    <span>Logout</span>
+                </a>
+
+            </nav>
+
+
+            <!-- SIDEBAR FOOTER -->
+
+            <div class="sidebar-footer">
+
+                <small>SCHOOL ENROLLMENT SYSTEM</small>
+
+                <p>Mon – Fri · 8:00 AM – 5:00 PM</p>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =================================
+             MAIN CONTENT
+        ================================== -->
+
+        <main class="main-content">
+
+
+            <!-- PAGE TITLE -->
+
+            <div class="page-heading-flex">
+                <div class="page-heading">
+                    <h1>Nurse Console</h1>
+                    <p>Manage medical screening and assist students in the queue.</p>
+                </div>
+                <div class="office-status-pill">
+                    Office open
+                </div>
+            </div>
+
+
+
+            <!-- =================================
+                 TOP STATS GRID
+            ================================== -->
+
+            <div class="console-top-stats">
+                <div class="serving-stat-card">
+                    <small>Now Serving</small>
+                    <h1 id="nowServing">N-002</h1>
+                </div>
+
+                <div class="waiting-stat-card">
+                    <small>Students Waiting</small>
+                    <h2 id="waitingCount">2</h2>
+                </div>
+            </div>
+
+
+
+            <!-- =================================
+                 CONTENT GRID
+            ================================== -->
+
+            <div class="content-grid">
+
+
+                <!-- =================================
+                     LEFT COLUMN (Queue Table & Actions)
+                ================================== -->
+
+                <section class="form-card queue-section">
+
+                    <!-- STUDENT TABS -->
+
+                    <div class="student-tabs">
+
+                        <button type="button"
+                                class="tab active"
+                                data-filter="Freshman">
+
+                            Freshmen
+
+                        </button>
+
+
+                        <button type="button"
+                                class="tab"
+                                data-filter="Old Student">
+
+                            Old Students
+
+                        </button>
+
+                    </div>
+
+
+
+                    <!-- QUEUE TABLE -->
+
+                    <div class="queue-table-wrapper">
+                        <div class="queue-table-header">
+                            <span>STUDENT NAME</span>
+                            <span>TYPE</span>
+                            <span>STATUS</span>
+                        </div>
+
+                        <div id="studentList" class="queue-table-body">
+                            <!-- Dynamic rows injected by JS -->
+                        </div>
+                    </div>
+
+
+
+                    <!-- CONSOLE ACTION BUTTONS -->
+
+                    <div class="console-actions">
+
+                        <button type="button" class="issue-button" id="callNext">
+                            <i data-lucide="volume-2"></i>
+                            Call Next
+                        </button>
+
+
+                        <button type="button" class="skip-button" id="skipStudent">
+                            Skip
+                        </button>
+
+
+                        <button type="button" class="transfer-button" id="transferStudent">
+                            <i data-lucide="repeat"></i>
+                            Transfer
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================
+                     RIGHT COLUMN (Student Details & Screening)
+                ================================== -->
+
+                <section class="form-card details-card">
+
+
+                    <!-- DETAILS HEADER -->
+
+                    <div class="details-card-header">
+                        <h2>Student Details</h2>
+                        <i data-lucide="file-text" class="header-file-icon"></i>
+                    </div>
+
+
+
+                    <!-- STUDENT PROFILE -->
+
+                    <div class="student-profile-row">
+
+                        <div class="profile-avatar-large">
+                            <i data-lucide="user-round"></i>
+                        </div>
+
+                        <div>
+                            <h3 id="detailName">Jea Mea Pielago</h3>
+                            <p id="detailTicket">Ticket N-002 · Freshman</p>
+                            <small id="detailType">Type: New Student</small>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="section-divider"></div>
+
+
+
+                    <!-- MEDICAL REQUIREMENTS -->
+
+                    <div class="requirements">
+
+                        <h2>Medical Requirements</h2>
+
+
+                        <label class="requirement-item">
+
+                            <input
+                                type="checkbox"
+                                name="nurseRequirements"
+                                value="Physical Examination"
+                            >
+
+                            <span>Physical Examination</span>
+
+                        </label>
+
+
+                        <label class="requirement-item">
+
+                            <input
+                                type="checkbox"
+                                name="nurseRequirements"
+                                value="Laboratory Results"
+                            >
+
+                            <span>Laboratory Results</span>
+
+                        </label>
+
+
+                        <label class="requirement-item">
+
+                            <input
+                                type="checkbox"
+                                name="nurseRequirements"
+                                value="Chest X-ray"
+                            >
+
+                            <span>Chest X-ray</span>
+
+                        </label>
+
+
+                        <label class="requirement-item">
+
+                            <input
+                                type="checkbox"
+                                name="nurseRequirements"
+                                value="Other Documents"
+                            >
+
+                            <span>Other Documents</span>
+
+                        </label>
+
+                    </div>
+
+
+
+                    <!-- STATUS SELECT -->
+
+                    <div class="form-group">
+
+                        <label for="screeningStatus">
+                            Status
+                        </label>
+
+                        <div class="select-wrapper status-select-wrapper">
+
+                            <select id="screeningStatus">
+
+                                <option value="Documents Under Review">Documents Under Review</option>
+                                <option value="Requirements Complete">Requirements Complete</option>
+                                <option value="Needs Additional Documents">Needs Additional Documents</option>
+
+                            </select>
+
+                            <i data-lucide="chevron-down"
+                            class="select-icon"></i>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- NOTES TEXTAREA -->
+
+                    <div class="form-group">
+
+                        <label for="studentNotes">
+                            Notes
+                        </label>
+
+                        <textarea
+                            id="studentNotes"
+                            placeholder="Enter screening notes..."
+                            rows="3"
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <!-- DETAILS ACTION BUTTONS -->
+
+                    <div class="details-action-buttons">
+
+                        <button type="button"
+                                class="cancel-button save-action-btn"
+                                id="saveStudent">
+
+                            Save
+
+                        </button>
+
+
+                        <button type="button" class="complete-action-btn" id="completeScreening">
+
+                            <i data-lucide="check"></i>
+
+                            Complete Screening
+
+                        </button>
+
+                    </div>
+
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- LUCIDE ICON LIBRARY -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- JAVASCRIPT -->
+    <script src="Console Nurse.js"></script>
+
+</body>
+
+</html>

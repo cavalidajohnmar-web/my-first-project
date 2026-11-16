@@ -1,0 +1,999 @@
+/* ======================================
+   1. GENERAL SETTINGS
+====================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f0f6fd;
+    color: #102f55;
+    min-height: 100vh;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+
+/* ======================================
+   2. TOP HEADER
+====================================== */
+
+.top-header {
+    height: 71px;
+    width: 100%;
+    background: #082d55;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+    color: white;
+    position: relative;
+    z-index: 10;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-container {
+    width: 51px;
+    height: 51px;
+    background: #f8e900;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.brand-text h2 {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.brand-text p {
+    font-size: 12px;
+    color: #d1dfef;
+}
+
+
+/* HEADER ACTIONS */
+
+.top-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.date-time {
+    font-size: 12px;
+    color: #e1eaf5;
+    white-space: nowrap;
+}
+
+.header-menu {
+    position: relative;
+}
+
+.icon-button {
+    width: 32px;
+    height: 35px;
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    position: relative;
+    transition: background 0.2s;
+}
+
+.icon-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.icon-button svg {
+    width: 17px;
+    height: 17px;
+    stroke-width: 1.5;
+}
+
+.notification-dot {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 7px;
+    height: 7px;
+    background: #00bd61;
+    border-radius: 50%;
+    border: 1px solid #082d55;
+}
+
+.notification-dot.hidden {
+    display: none;
+}
+
+.profile-button {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    background: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.admin-avatar {
+    width: 32px;
+    height: 32px;
+    background: #24577f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-avatar svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 1.4;
+}
+
+.admin-label {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 3px;
+}
+
+.admin-label strong {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.admin-label small {
+    font-size: 10px;
+    color: #c7d8e9;
+}
+
+
+/* DROPDOWN MENUS */
+
+.dropdown-panel {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    width: 240px;
+    background: white;
+    color: #102f55;
+    padding: 16px;
+    border: 1px solid #d9e6f2;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    z-index: 30;
+}
+
+.notification-dropdown {
+    width: 290px;
+    padding: 14px;
+}
+
+.dropdown-panel[hidden] {
+    display: none;
+}
+
+.dropdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e5edf5;
+}
+
+.dropdown-header h3 {
+    font-size: 14px;
+    margin: 0;
+}
+
+.clear-notif-btn {
+    background: transparent !important;
+    width: auto !important;
+    padding: 0 !important;
+    font-size: 11px;
+    color: #0869d9 !important;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.clear-notif-btn:hover {
+    text-decoration: underline;
+}
+
+.notification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 230px;
+    overflow-y: auto;
+}
+
+.notif-item {
+    padding: 9px 10px;
+    border-radius: 6px;
+    background: #f8fbff;
+    border: 1px solid #edf3f8;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.notif-item:hover {
+    background: #eef5fd;
+}
+
+.notif-item.unread {
+    background: #e8f2ff;
+    border-color: #cfe3fc;
+}
+
+.notif-item p {
+    color: #102f55;
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
+
+.notif-item small {
+    color: #718baa;
+    font-size: 10px;
+}
+
+.profile-panel h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.profile-panel p {
+    color: #6480a3;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.profile-panel button {
+    width: 100%;
+    padding: 9px;
+    background: #e8f2ff;
+    border: none;
+    border-radius: 5px;
+    color: #102f55;
+    cursor: pointer;
+}
+
+
+/* ======================================
+   3. MAIN LAYOUT
+====================================== */
+
+.main-layout {
+    display: flex;
+    min-height: calc(100vh - 71px);
+}
+
+
+/* ======================================
+   4. SIDEBAR
+====================================== */
+
+.sidebar {
+    width: 198px;
+    min-width: 198px;
+    background: #062649;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: calc(100vh - 71px);
+}
+
+.sidebar-nav {
+    padding: 20px 11px;
+}
+
+.nav-link {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 0 14px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #e5edf6;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.nav-link:hover {
+    background: #12436f;
+}
+
+.nav-link.active {
+    background: #0869d9;
+    color: white;
+}
+
+.nav-link svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 1.5;
+    flex-shrink: 0;
+}
+
+.sidebar-footer {
+    padding: 18px;
+    margin-bottom: 5px;
+}
+
+.sidebar-footer small {
+    font-size: 9px;
+    color: #91aac5;
+}
+
+.sidebar-footer p {
+    font-size: 11px;
+    margin-top: 6px;
+    color: white;
+    white-space: nowrap;
+}
+
+
+/* ======================================
+   5. MAIN CONTENT
+====================================== */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 27px 31px;
+}
+
+.page-heading-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.page-heading h1 {
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 7px;
+    color: #102f55;
+}
+
+.page-heading p {
+    color: #6985a7;
+    font-size: 13px;
+}
+
+.office-status-pill {
+    background: #e3f8eb;
+    color: #008f43;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+
+/* ======================================
+   6. CONSOLE TOP STATS
+====================================== */
+
+.console-top-stats {
+    display: grid;
+    grid-template-columns: 1.25fr 0.88fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.serving-stat-card {
+    background: #e3f8eb;
+    border: 1px solid #c7f2d8;
+    border-radius: 9px;
+    padding: 20px 25px;
+    box-shadow: 0 5px 15px rgba(27, 65, 105, 0.03);
+}
+
+.serving-stat-card small {
+    display: block;
+    color: #008f43;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.serving-stat-card h1 {
+    font-size: 32px;
+    color: #00b85a;
+    font-weight: 500;
+}
+
+.waiting-stat-card {
+    background: white;
+    border: 1px solid #d9e6f2;
+    border-radius: 9px;
+    padding: 20px 25px;
+    box-shadow: 0 5px 15px rgba(27, 65, 105, 0.03);
+}
+
+.waiting-stat-card small {
+    display: block;
+    color: #6985a7;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.waiting-stat-card h2 {
+    font-size: 32px;
+    color: #102f55;
+    font-weight: 500;
+}
+
+
+/* ======================================
+   7. CONTENT GRID
+====================================== */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.88fr);
+    gap: 20px;
+    align-items: start;
+}
+
+
+/* ======================================
+   8. FORM CARD (CONTAINERS)
+====================================== */
+
+.form-card {
+    background: white;
+    border: 1px solid #d9e6f2;
+    border-radius: 9px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(27, 65, 105, 0.05);
+}
+
+
+/* ======================================
+   9. STUDENT TYPE TABS
+====================================== */
+
+.student-tabs {
+    display: flex;
+    padding: 4px;
+    background: #e7f2ff;
+    border-radius: 7px;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.tab {
+    flex: 1;
+    height: 37px;
+    border: 1px solid #d5e4f5;
+    background: transparent;
+    color: #102f55;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: 0.2s;
+}
+
+.tab.active {
+    background: #0869d9;
+    color: white;
+    border-color: #0869d9;
+}
+
+.tab:hover:not(.active) {
+    background: #dcecff;
+}
+
+
+/* ======================================
+   10. QUEUE TABLE
+====================================== */
+
+.queue-table-wrapper {
+    border: 1px solid #e5edf5;
+    border-radius: 7px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.queue-table-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    background: #f7fbff;
+    padding: 10px 15px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #718baa;
+    border-bottom: 1px solid #e5edf5;
+}
+
+.queue-table-body {
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.student-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #edf3f8;
+    cursor: pointer;
+    transition: background 0.15s;
+    font-size: 13px;
+}
+
+.student-row:last-child {
+    border-bottom: none;
+}
+
+.student-row:hover {
+    background: #f8fbff;
+}
+
+.student-row.selected {
+    background: #eaf3ff;
+}
+
+.student-name span {
+    font-weight: 500;
+    color: #102f55;
+    display: block;
+}
+
+.student-name small {
+    color: #718baa;
+    font-size: 11px;
+    display: block;
+    margin-top: 2px;
+}
+
+.student-status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    width: fit-content;
+}
+
+.serving-status {
+    background: #e3f8eb;
+    color: #008f43;
+}
+
+.waiting-status {
+    background: #fff8e1;
+    color: #b78103;
+}
+
+.skipped-status {
+    background: #fde8e8;
+    color: #c53030;
+}
+
+.completed-status {
+    background: #e2e8f0;
+    color: #4a5568;
+}
+
+.transferred-status {
+    background: #e1effe;
+    color: #1e429f;
+}
+
+
+/* ======================================
+   11. CONSOLE ACTIONS
+====================================== */
+
+.console-actions {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 10px;
+}
+
+.issue-button {
+    height: 46px;
+    background: #0869d9;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.issue-button:hover {
+    background: #075bbd;
+}
+
+.skip-button,
+.transfer-button {
+    height: 46px;
+    padding: 0 20px;
+    background: #5a7690;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+.skip-button:hover,
+.transfer-button:hover {
+    background: #4b647c;
+}
+
+
+/* ======================================
+   12. DETAILS CARD
+====================================== */
+
+.details-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.details-card-header h2 {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.header-file-icon {
+    width: 18px;
+    height: 18px;
+    color: #0869d9;
+    stroke-width: 1.5;
+}
+
+.student-profile-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.profile-avatar-large {
+    width: 48px;
+    height: 48px;
+    background: #e7f2ff;
+    color: #0869d9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-avatar-large svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.5;
+}
+
+.student-profile-row h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 3px;
+    color: #102f55;
+}
+
+.student-profile-row p {
+    font-size: 12px;
+    color: #6985a7;
+    margin-bottom: 2px;
+}
+
+.student-profile-row small {
+    font-size: 11px;
+    color: #8098b5;
+}
+
+.section-divider {
+    height: 1px;
+    background: #e5edf5;
+    margin: 19px 0 21px;
+}
+
+
+/* ======================================
+   13. MEDICAL REQUIREMENTS
+====================================== */
+
+.requirements h2 {
+    font-size: 17px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.requirement-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 13px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #102f55;
+}
+
+.requirement-item input {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    min-width: 15px;
+    border: 1px solid #00bd61;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    margin: 0;
+}
+
+.requirement-item input:checked {
+    background: #00bd61;
+}
+
+.requirement-item input:checked::after {
+    content: "✓";
+    color: white;
+    position: absolute;
+    font-size: 10px;
+    left: 2px;
+    top: -1px;
+}
+
+
+/* ======================================
+   14. FORM GROUPS & INPUTS
+====================================== */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 9px;
+    color: #102f55;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.form-group select {
+    width: 100%;
+    height: 41px;
+    border: 1px solid #cbdced;
+    border-radius: 5px;
+    padding: 0 12px;
+    color: #52749a;
+    background: white;
+    outline: none;
+    font-size: 13px;
+    appearance: none;
+    cursor: pointer;
+    padding-right: 35px;
+}
+
+.form-group select:focus {
+    border-color: #0869d9;
+    box-shadow: 0 0 0 2px rgba(8, 105, 217, 0.08);
+}
+
+.select-icon {
+    position: absolute;
+    right: 13px;
+    top: 12px;
+    width: 15px;
+    height: 15px;
+    color: #718baa;
+    stroke-width: 1.5;
+    pointer-events: none;
+}
+
+.form-group textarea {
+    width: 100%;
+    border: 1px solid #cbdced;
+    border-radius: 5px;
+    padding: 10px 12px;
+    color: #52749a;
+    background: white;
+    outline: none;
+    font-size: 13px;
+    resize: vertical;
+}
+
+.form-group textarea:focus {
+    border-color: #0869d9;
+    box-shadow: 0 0 0 2px rgba(8, 105, 217, 0.08);
+}
+
+.form-group textarea::placeholder {
+    color: #718baa;
+}
+
+
+/* ======================================
+   15. DETAILS ACTION BUTTONS
+====================================== */
+
+.details-action-buttons {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.save-action-btn {
+    width: 100%;
+    height: 43px;
+    background: #e6f1ff;
+    border: 1px solid #d3e4f8;
+    color: #102f55;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.save-action-btn:hover {
+    background: #d6e8fc;
+}
+
+.complete-action-btn {
+    width: 100%;
+    height: 43px;
+    background: #00bd61;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.complete-action-btn:hover {
+    background: #00a253;
+}
+
+.complete-action-btn svg {
+    width: 15px;
+    height: 15px;
+    stroke-width: 1.5;
+}
+
+
+/* ======================================
+   16. RESPONSIVE DESIGN
+====================================== */
+
+@media (max-width: 1000px) {
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .console-top-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .top-header {
+        padding: 0 12px;
+    }
+
+    .brand-text h2 {
+        font-size: 14px;
+    }
+
+    .brand-text p {
+        font-size: 10px;
+    }
+
+    .date-time {
+        display: none;
+    }
+
+    .main-layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-width: 100%;
+        min-height: auto;
+    }
+
+    .sidebar-nav {
+        display: flex;
+        overflow-x: auto;
+        padding: 10px;
+    }
+
+    .nav-link {
+        min-width: max-content;
+        margin: 0 4px;
+    }
+
+    .sidebar-footer {
+        display: none;
+    }
+
+    .main-content {
+        padding: 20px 13px;
+    }
+
+    .form-card {
+        padding: 18px;
+    }
+
+    .console-top-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .console-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .details-action-buttons {
+        grid-template-columns: 1fr;
+    }
+
+}

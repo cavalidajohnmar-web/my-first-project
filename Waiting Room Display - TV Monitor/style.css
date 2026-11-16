@@ -1,0 +1,318 @@
+/* ======================================
+   1. GENERAL SETTINGS
+====================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #041d38;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+
+/* ======================================
+   2. TV HEADER
+====================================== */
+.tv-header {
+    height: 75px;
+    background: #082d55;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 35px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-container {
+    width: 52px;
+    height: 52px;
+    background: #f8e900;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.brand-text h2 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.brand-text p {
+    font-size: 12px;
+    color: #cbdcf8;
+}
+
+.tv-header-right .date-time {
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.5px;
+}
+
+
+/* ======================================
+   3. MAIN CONTENT CONTAINER
+====================================== */
+.tv-main {
+    flex: 1;
+    padding: 25px 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.tv-title-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tv-title-bar h1 {
+    font-size: 22px;
+    font-weight: 400;
+    color: #e2eefc;
+}
+
+.live-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #4ade80;
+    font-weight: 500;
+}
+
+.pulse-dot {
+    width: 9px;
+    height: 9px;
+    background: #4ade80;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #4ade80;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+
+/* ======================================
+   4. OFFICES GRID (3 BIG TV CARDS)
+====================================== */
+.offices-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.office-card {
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.card-header svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 2;
+}
+
+.card-body {
+    background: #eef4fc;
+    color: #0c2540;
+    padding: 35px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.card-body small {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #517196;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.card-body h1 {
+    font-size: 72px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 25px;
+}
+
+.next-pill {
+    background: white;
+    border: 1px solid #d0e1f5;
+    padding: 8px 22px;
+    border-radius: 30px;
+    font-size: 15px;
+    color: #33567a;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.next-pill span {
+    font-weight: 700;
+    color: #0869d9;
+}
+
+
+/* THEME COLORS PER OFFICE */
+.registrar-card .card-header { background: #0869d9; }
+.registrar-card .card-body h1 { color: #084c98; }
+
+.nurse-card .card-header { background: #00b85a; }
+.nurse-card .card-body h1 { color: #00803e; }
+
+.mis-card .card-header { background: #8b5cf6; }
+.mis-card .card-body h1 { color: #6d28d9; }
+
+
+/* ======================================
+   5. ANNOUNCEMENT BANNER
+====================================== */
+.announcement-banner {
+    background: #082d55;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 16px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 16px;
+    color: #e2eefc;
+}
+
+.announcement-banner svg {
+    width: 22px;
+    height: 22px;
+    color: #60a5fa;
+    stroke-width: 2;
+}
+
+
+/* ======================================
+   6. FOOTER STATS
+====================================== */
+.tv-footer-stats {
+    display: grid;
+    grid-template-columns: repeat(3, auto) 1fr;
+    gap: 30px;
+    align-items: center;
+    background: #052649;
+    padding: 18px 25px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-stat-item svg {
+    width: 24px;
+    height: 24px;
+    color: #93c5fd;
+    stroke-width: 1.7;
+}
+
+.footer-stat-item small {
+    display: block;
+    font-size: 10px;
+    color: #8faecf;
+    letter-spacing: 0.5px;
+}
+
+.footer-stat-item strong {
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+}
+
+.footer-instruction {
+    text-align: right;
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    padding-left: 25px;
+}
+
+.footer-instruction small {
+    color: #93c5fd;
+    font-size: 11px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.footer-instruction p {
+    color: #bcccde;
+    font-size: 11px;
+}
+
+
+/* ======================================
+   7. RESPONSIVE TV VIEW
+====================================== */
+@media (max-width: 1024px) {
+    .offices-grid {
+        grid-template-columns: 1fr;
+    }
+    .tv-footer-stats {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .footer-instruction {
+        border-left: none;
+        padding-left: 0;
+        text-align: center;
+    }
+}

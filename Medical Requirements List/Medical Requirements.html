@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QBSEMS | Medical Requirements</title>
+    <link rel="stylesheet" href="Medical Requirements.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <!-- =================================
+         TOP HEADER
+    ================================== -->
+    <header class="top-header">
+        <div class="brand">
+            <div class="logo-container">
+                <img src="ctulogo(6).jpg" alt="CTU Ginatilan Logo">
+            </div>
+            <div class="brand-text">
+                <h2>CTU – Ginatilan</h2>
+                <p>Extension Campus · School Enrollment System</p>
+            </div>
+        </div>
+
+        <div class="top-actions">
+            <!-- LIVE DATE AND TIME -->
+            <span class="date-time" id="dateTime"></span>
+
+            <!-- NOTIFICATION DROPDOWN -->
+            <div class="header-menu">
+                <button class="icon-button" id="notificationBtn" type="button" aria-label="Notifications">
+                    <i data-lucide="bell"></i>
+                    <span class="notification-dot" id="notificationDot"></span>
+                </button>
+
+                <div class="dropdown-panel notification-dropdown" id="notificationPanel" hidden>
+                    <div class="dropdown-header">
+                        <h3>Notifications</h3>
+                        <button type="button" class="clear-notif-btn" id="clearNotifBtn">Mark all read</button>
+                    </div>
+                    <div class="notification-list" id="notificationList">
+                        <div class="notif-item unread">
+                            <p><strong>System:</strong> Medical checklist checkboxes are now interactive.</p>
+                            <small>Just now</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ADMIN PROFILE DROPDOWN -->
+            <div class="header-menu">
+                <button class="profile-button" id="profileBtn" type="button">
+                    <span class="admin-avatar">
+                        <i data-lucide="user-round"></i>
+                    </span>
+                    <span class="admin-label">
+                        <strong>Admin</strong>
+                        <small>Administrator</small>
+                    </span>
+                </button>
+
+                <div class="dropdown-panel profile-panel" id="profilePanel" hidden>
+                    <h3>Administrator</h3>
+                    <p>CTU – Ginatilan</p>
+                    <button type="button" id="profileLogout">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- =================================
+         MAIN LAYOUT
+    ================================== -->
+    <div class="main-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="Main Dashboard.html" class="nav-link">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Main Dashboard</span>
+                </a>
+                <a href="Issue Ticket.html" class="nav-link">
+                    <i data-lucide="ticket"></i>
+                    <span>Issue Ticket</span>
+                </a>
+                <a href="Console Nurse.html" class="nav-link">
+                    <i data-lucide="users-round"></i>
+                    <span>Queue Management</span>
+                </a>
+                <a href="Medical Requirements.html" class="nav-link active">
+                    <i data-lucide="clipboard-list"></i>
+                    <span>Medical Requirements</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <i data-lucide="chart-no-axes-column"></i>
+                    <span>Reports</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <i data-lucide="settings"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="nav-link" id="sidebarLogout">
+                    <i data-lucide="log-out"></i>
+                    <span>Logout</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <small>SCHOOL ENROLLMENT SYSTEM</small>
+                <p>Mon – Fri · 8:00 AM – 5:00 PM</p>
+            </div>
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- PAGE HEADING & PRINT BUTTON -->
+            <div class="page-heading-flex">
+                <div class="page-heading">
+                    <h1>Medical Requirements</h1>
+                    <p>A complete interactive checklist for enrollment medical screening.</p>
+                </div>
+                <button type="button" class="print-button" id="printBtn">
+                    <i data-lucide="printer"></i>
+                    Print Checklist
+                </button>
+            </div>
+
+
+            <!-- CONTENT GRID -->
+            <div class="requirements-grid">
+
+                <!-- LEFT COLUMN -->
+                <div class="left-cards-column">
+
+                    <!-- FRESHMEN CARD -->
+                    <div class="req-card">
+                        <div class="card-title-row">
+                            <div class="req-icon blue-icon">
+                                <i data-lucide="file-text"></i>
+                            </div>
+                            <div>
+                                <h2>For Freshmen / New Students</h2>
+                                <p>Click checkboxes to verify submitted medical documents.</p>
+                            </div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <ul class="checklist-interactive">
+                            <li>
+                                <label>
+                                    <input type="checkbox" class="interactive-check" data-id="fresh_phys">
+                                    <span>Physical Examination Form</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" class="interactive-check" data-id="fresh_lab">
+                                    <span>Laboratory Results (CBC, Urinalysis)</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" class="interactive-check" data-id="fresh_xray">
+                                    <span>Chest X-ray Result (if required)</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" class="interactive-check" data-id="fresh_other">
+                                    <span>Other Documents (as advised by the Nurse)</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <!-- OLD STUDENTS CARD -->
+                    <div class="req-card">
+                        <div class="card-title-row">
+                            <div class="req-icon light-blue-icon">
+                                <i data-lucide="user-check"></i>
+                            </div>
+                            <div>
+                                <h2>For Old / Returning Students</h2>
+                                <p>Click checkboxes to verify updated records for this academic year.</p>
+                            </div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <ul class="checklist-interactive">
+                            <li>
+                                <label>
+                                    <input type="checkbox" class="interactive-check" data-id="old_phys">
+                                    <span>Updated Physical Examination Form</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" class="interactive-check" data-id="old_lab">
+                                    <span>Laboratory Results (if required)</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" class="interactive-check" data-id="old_other">
+                                    <span>Other Medical Requirements</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT COLUMN -->
+                <div class="right-cards-column">
+
+                    <!-- NURSE OFFICE CARD -->
+                    <div class="req-card nurse-info-card">
+                        <div class="nurse-card-header">
+                            <div class="nurse-icon">
+                                <i data-lucide="heart-pulse"></i>
+                            </div>
+                            <h2>Nurse Office</h2>
+                        </div>
+
+                        <span class="screening-badge">
+                            Medical screening available
+                        </span>
+
+                        <p class="nurse-desc">
+                            Have your documents checked by campus health personnel before completing your enrollment.
+                        </p>
+
+                        <div class="divider"></div>
+
+                        <div class="office-schedule">
+                            <i data-lucide="clock"></i>
+                            <div>
+                                <strong>Monday – Friday</strong>
+                                <small>8:00 AM – 5:00 PM</small>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- BEFORE YOUR VISIT CARD -->
+                    <div class="req-card visit-card">
+                        <div class="visit-header">
+                            <i data-lucide="info"></i>
+                            <h3>Before your visit</h3>
+                        </div>
+
+                        <p class="visit-text">
+                            Medical requirements may vary depending on the student's condition and the advice of the attending physician.
+                        </p>
+                        <p class="visit-text">
+                            Bring the original documents and keep a copy for your records.
+                        </p>
+
+                        <a href="Issue Ticket.html" class="issue-ticket-link-btn">
+                            <i data-lucide="ticket"></i>
+                            Issue Nurse Ticket
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="Medical Requirements.js"></script>
+</body>
+
+</html>

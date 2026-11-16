@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QBSEMS | Reports Dashboard</title>
+    <!-- Stylesheet connection -->
+    <link rel="stylesheet" href="Reports.css">
+    <!-- Lucide icons library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <!-- =========================================
+         TOP HEADER SECTION
+    ========================================= -->
+    <header class="top-header">
+        <div class="brand">
+            <div class="logo-container">
+                <img src="ctulogo(8).jpg" alt="CTU Ginatilan Logo">
+            </div>
+            <div class="brand-text">
+                <h2>CTU – Ginatilan</h2>
+                <p>Extension Campus · School Enrollment System</p>
+            </div>
+        </div>
+
+        <div class="top-actions">
+            <!-- Live date and time display -->
+            <span class="date-time" id="dateTime"></span>
+
+            <!-- Notifications Dropdown Menu -->
+            <div class="header-menu">
+                <button class="icon-button" id="notificationBtn" type="button" aria-label="Notifications">
+                    <i data-lucide="bell"></i>
+                    <span class="notification-dot" id="notificationDot"></span>
+                </button>
+
+                <div class="dropdown-panel notification-dropdown" id="notificationPanel" hidden>
+                    <div class="dropdown-header">
+                        <h3>Notifications</h3>
+                        <button type="button" class="clear-notif-btn" id="clearNotifBtn">Mark all read</button>
+                    </div>
+                    <div class="notification-list" id="notificationList">
+                        <div class="notif-item unread">
+                            <p><strong>System:</strong> Reports dashboard synchronized live.</p>
+                            <small>Just now</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Profile & Logout Dropdown Menu -->
+            <div class="header-menu">
+                <button class="profile-button" id="profileBtn" type="button">
+                    <span class="admin-avatar">
+                        <i data-lucide="user-round"></i>
+                    </span>
+                    <span class="admin-label">
+                        <strong>Admin</strong>
+                        <small>Administrator</small>
+                    </span>
+                </button>
+
+                <div class="dropdown-panel profile-panel" id="profilePanel" hidden>
+                    <h3>Administrator</h3>
+                    <p>CTU – Ginatilan</p>
+                    <button type="button" id="profileLogout">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- =========================================
+         MAIN APPLICATION LAYOUT CONTAINER
+    ========================================= -->
+    <div class="main-layout">
+
+        <!-- SIDEBAR NAVIGATION -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="Main Dashboard.html" class="nav-link">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Main Dashboard</span>
+                </a>
+                <a href="Issue Ticket.html" class="nav-link">
+                    <i data-lucide="ticket"></i>
+                    <span>Issue Ticket</span>
+                </a>
+                <a href="Console Nurse.html" class="nav-link">
+                    <i data-lucide="users-round"></i>
+                    <span>Queue Management</span>
+                </a>
+                <a href="Medical Requirements.html" class="nav-link">
+                    <i data-lucide="clipboard-list"></i>
+                    <span>Medical Requirements</span>
+                </a>
+                <a href="Reports.html" class="nav-link active">
+                    <i data-lucide="chart-no-axes-column"></i>
+                    <span>Reports</span>
+                </a>
+                <a href="Setting.html" class="nav-link">
+                    <i data-lucide="settings"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="nav-link" id="sidebarLogout">
+                    <i data-lucide="log-out"></i>
+                    <span>Logout</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <small>SCHOOL ENROLLMENT SYSTEM</small>
+                <p>Mon – Fri · 8:00 AM – 5:00 PM</p>
+            </div>
+        </aside>
+
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
+
+            <!-- Page Header & Export Button -->
+            <div class="page-heading-flex">
+                <div class="page-heading">
+                    <h1>Reports Dashboard</h1>
+                    <p>Track queue volume, service completion, and waiting times.</p>
+                </div>
+                <button type="button" class="export-button" id="exportBtn">
+                    <i data-lucide="download"></i>
+                    Export Report
+                </button>
+            </div>
+
+
+            <!-- FILTERS & DATE SELECTOR BAR -->
+            <div class="reports-filter-bar">
+                <div class="filter-pills">
+                    <button type="button" class="pill-btn active" data-filter="today">Today</button>
+                    <button type="button" class="pill-btn" data-filter="week">This Week</button>
+                    <button type="button" class="pill-btn" data-filter="month">This Month</button>
+                    <button type="button" class="pill-btn" data-filter="custom">Custom</button>
+                </div>
+
+                <div class="date-picker-dropdown" id="datePickerBtn" title="Click to change date range">
+                    <i data-lucide="calendar"></i>
+                    <span id="selectedDateText">November 14, 2026</span>
+                    <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
+                </div>
+            </div>
+
+
+            <!-- STATS CARDS ROW (3 Cards) -->
+            <div class="stats-cards-grid">
+                <!-- Card 1 -->
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <small>Total Queues</small>
+                        <i data-lucide="file-text" style="color: #0869d9;"></i>
+                    </div>
+                    <h2 id="statTotalQueues">48</h2>
+                    <p id="statTotalSub">Across all enrollment offices</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <small>Completed</small>
+                        <i data-lucide="user-check" style="color: #008f43;"></i>
+                    </div>
+                    <h2 id="statCompleted">31</h2>
+                    <p id="statCompletedSub">64.6% of today's total</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <small>Average Wait</small>
+                        <i data-lucide="clock" style="color: #8b5cf6;"></i>
+                    </div>
+                    <h2 id="statAvgWait">10 min</h2>
+                    <p>From ticket issued to service</p>
+                </div>
+            </div>
+
+
+            <!-- CHARTS SECTION (Grid 2 Columns) -->
+            <div class="charts-grid-section">
+
+                <!-- Left Card: Queues by Office (Bar Chart) -->
+                <div class="chart-card">
+                    <div class="chart-header-row">
+                        <div>
+                            <h3>Queues by Office</h3>
+                            <small id="barChartSub">Number of tickets issued today</small>
+                        </div>
+                        <i data-lucide="more-horizontal" style="color: #718baa; cursor: pointer;"></i>
+                    </div>
+
+                    <div class="bar-chart-container">
+                        <!-- Bar 1: Registrar -->
+                        <div class="bar-col">
+                            <span class="bar-val" id="valRegistrar">18</span>
+                            <div class="bar-fill registrar-bar" id="barRegistrar" style="height: 140px;"></div>
+                            <span class="bar-label">Registrar</span>
+                        </div>
+                        <!-- Bar 2: Nurse -->
+                        <div class="bar-col">
+                            <span class="bar-val" id="valNurse">15</span>
+                            <div class="bar-fill nurse-bar" id="barNurse" style="height: 115px;"></div>
+                            <span class="bar-label">Nurse</span>
+                        </div>
+                        <!-- Bar 3: MIS -->
+                        <div class="bar-col">
+                            <span class="bar-val" id="valMis">15</span>
+                            <div class="bar-fill mis-bar" id="barMis" style="height: 115px;"></div>
+                            <span class="bar-label">MIS</span>
+                        </div>
+                    </div>
+
+                    <div class="chart-footer-note" id="chartFooterText">
+                        Registrar received the highest number of queues today.
+                    </div>
+                </div>
+
+
+                <!-- Right Card: Queue Status (Interactive Solid Pie Chart & Legend) -->
+                <div class="chart-card">
+                    <div class="chart-header-row">
+                        <div>
+                            <h3>Queue Status</h3>
+                            <small>Distribution across all offices</small>
+                        </div>
+                    </div>
+
+                    <div class="status-chart-body">
+                        <!-- Interactive Solid Pie Chart Element -->
+                        <div class="pie-chart-wrapper" id="interactivePieChart"></div>
+
+                        <!-- Legend -->
+                        <div class="status-legend">
+                            <div class="legend-item">
+                                <span class="legend-color completed-color"></span>
+                                <div>
+                                    <small>Completed</small>
+                                    <strong id="legendCompleted">31</strong>
+                                </div>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color serving-color"></span>
+                                <div>
+                                    <small>Serving</small>
+                                    <strong id="legendServing">3</strong>
+                                </div>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color waiting-color"></span>
+                                <div>
+                                    <small>Waiting</small>
+                                    <strong id="legendWaiting">14</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-footer-note" id="donutFooterNote" style="margin-top: 15px;">
+                        48 total queues · Last updated live
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- Script file connection -->
+    <script src="Reports.js"></script>
+</body>
+
+</html>

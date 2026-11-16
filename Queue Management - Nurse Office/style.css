@@ -1,0 +1,704 @@
+/* =========================================
+   1. GENERAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f1f7fd;
+    color: #15365e;
+}
+
+/* =========================================
+   2. HEADER
+========================================= */
+
+.topbar {
+    height: 70px;
+    background: #082d53;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 26px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 51px;
+    height: 51px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #ffdf00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.brand h2 {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.brand p {
+    font-size: 12px;
+    color: #c5d6e8;
+    margin-top: 5px;
+}
+
+.top-right {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    font-size: 12px;
+}
+
+.header-icon {
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.header-icon svg {
+    width: 17px;
+}
+
+.profile-icon {
+    width: 34px;
+    height: 34px;
+    background: #164c78;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.profile-icon svg {
+    width: 18px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.profile strong {
+    font-weight: 500;
+}
+
+.profile small {
+    color: #c5d6e8;
+}
+
+/* =========================================
+   3. SIDEBAR
+========================================= */
+
+.sidebar {
+    position: fixed;
+    top: 70px;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    background: #062749;
+    padding: 23px 13px;
+    color: white;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.nav-link {
+    height: 44px;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    color: white;
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 13px;
+}
+
+.nav-link svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 1.5;
+    flex-shrink: 0;
+}
+
+.nav-link.active {
+    background: #0870df;
+}
+
+.nav-link:hover {
+    background: #164a78;
+}
+
+.sidebar-footer {
+    position: absolute;
+    bottom: 23px;
+    left: 20px;
+}
+
+.sidebar-footer small {
+    color: #8daac5;
+    font-size: 9px;
+}
+
+.sidebar-footer p {
+    margin-top: 7px;
+    font-size: 11px;
+}
+
+/* =========================================
+   4. MAIN CONTENT
+========================================= */
+
+.main-content {
+    margin-left: 200px;
+    padding: 100px 31px 30px;
+}
+
+.page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 21px;
+}
+
+.page-heading h1 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.page-heading p {
+    color: #6985a5;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+/* =========================================
+   5. OFFICE SELECTOR
+========================================= */
+
+.office-select-wrapper {
+    position: relative;
+    width: 135px;
+}
+
+.office-select-wrapper svg {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    width: 13px;
+    pointer-events: none;
+}
+
+.office-select {
+    width: 100%;
+    height: 38px;
+    appearance: none;
+    background: white;
+    border: 1px solid #dce8f5;
+    border-radius: 6px;
+    padding: 0 10px 0 38px;
+    color: #15365e;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* =========================================
+   6. STATISTICS
+========================================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 17px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    height: 110px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    padding: 20px;
+}
+
+.serving-card {
+    background: #e3f7e9;
+    color: #00883c;
+}
+
+.waiting-card {
+    background: #e5f1fd;
+    color: #15365e;
+}
+
+.stat-icon {
+    width: 49px;
+    height: 49px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.stat-icon svg {
+    width: 23px;
+    height: 23px;
+    stroke-width: 1.4;
+}
+
+.serving-card .stat-icon {
+    background: #08ba5c;
+    color: white;
+}
+
+.waiting-card .stat-icon {
+    color: #0870e9;
+    border: 1px solid #0870e9;
+}
+
+.stat-card p {
+    font-size: 14px;
+    margin-bottom: 7px;
+    color: #6985a5;
+}
+
+.serving-card p {
+    color: #00883c;
+}
+
+.stat-card h2 {
+    font-size: 35px;
+    font-weight: 700;
+}
+
+/* =========================================
+   7. QUEUE LAYOUT
+========================================= */
+
+.queue-layout {
+    display: grid;
+    grid-template-columns: 2.2fr 0.9fr;
+    gap: 17px;
+    align-items: start;
+}
+
+.active-queue-card,
+.current-student-card {
+    background: white;
+    border: 1px solid #dce8f5;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(28, 65, 105, 0.06);
+}
+
+/* =========================================
+   8. ACTIVE QUEUE
+========================================= */
+
+.active-queue-card {
+    padding: 19px;
+}
+
+.card-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.card-heading h3 {
+    font-size: 17px;
+}
+
+.live-badge {
+    background: #e5f1ff;
+    color: #0870e9;
+    padding: 6px 11px;
+    border-radius: 5px;
+    font-size: 11px;
+}
+
+.table-header,
+.queue-row {
+    display: grid;
+    grid-template-columns: 0.3fr 1fr 2.3fr 1fr 0.8fr;
+    align-items: center;
+    gap: 10px;
+}
+
+.table-header {
+    background: #f7fafd;
+    color: #7189a6;
+    padding: 12px 11px;
+    font-size: 10px;
+}
+
+.queue-row {
+    padding: 16px 11px;
+    border-radius: 5px;
+    min-height: 52px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.queue-row:hover {
+    background: #f0f6fd;
+}
+
+.queue-row.selected {
+    background: #e3f7e9;
+}
+
+.queue-row .ticket {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.queue-row .time-issued {
+    color: #6e89a7;
+}
+
+.queue-status {
+    width: fit-content;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 11px;
+}
+
+.status-serving {
+    background: #e3f7e9;
+    color: #00883c;
+}
+
+.status-waiting {
+    background: #fff3c9;
+    color: #a97800;
+}
+
+.status-skipped {
+    background: #fce8e8;
+    color: #bd4141;
+}
+
+/* =========================================
+   9. QUEUE ACTION BUTTONS
+========================================= */
+
+.queue-actions {
+    display: grid;
+    grid-template-columns: 1.1fr 1.2fr 0.6fr;
+    gap: 10px;
+    border-top: 1px solid #e5edf5;
+    margin-top: 13px;
+    padding-top: 14px;
+}
+
+.btn {
+    height: 46px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn:hover,
+.recall-btn:hover {
+    filter: brightness(0.94);
+}
+
+.btn svg {
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+}
+
+.call-btn {
+    background: #0669dc;
+}
+
+.complete-btn {
+    background: #08b95a;
+}
+
+.skip-btn {
+    background: #52768f;
+}
+
+/* =========================================
+   10. RIGHT SECTION
+========================================= */
+
+.right-section {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+/* CURRENT STUDENT */
+
+.current-student-card {
+    padding: 20px;
+}
+
+.current-student-card h3 {
+    font-size: 17px;
+    margin-bottom: 19px;
+}
+
+.current-student-card h1 {
+    color: #00b953;
+    font-size: 31px;
+    font-weight: 400;
+    margin-bottom: 6px;
+}
+
+.current-student-card p {
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.current-student-card small {
+    color: #6e89a7;
+    font-size: 11px;
+}
+
+.current-student-card hr {
+    border: none;
+    border-top: 1px solid #dce8f5;
+    margin: 17px 0 14px;
+}
+
+.service-time {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.service-time span {
+    color: #6e89a7;
+}
+
+.service-time strong {
+    font-weight: 500;
+}
+
+.recall-btn {
+    width: 100%;
+    height: 38px;
+    background: #e5f1ff;
+    color: #15365e;
+    border: 1px solid #d4e5f7;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.recall-btn svg {
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+}
+
+/* =========================================
+   11. INFORMATION CARD
+========================================= */
+
+.info-card {
+    background: #e5f1ff;
+    padding: 17px;
+    border-radius: 9px;
+}
+
+.info-card > svg {
+    width: 17px;
+    height: 17px;
+    color: #0870e9;
+    margin-bottom: 9px;
+}
+
+.info-card p {
+    font-size: 13px;
+    margin-bottom: 9px;
+}
+
+.info-card small {
+    display: block;
+    color: #6985a5;
+    line-height: 1.5;
+    font-size: 12px;
+}
+
+/* =========================================
+   12. RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+    .queue-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .right-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+    .sidebar {
+        width: 65px;
+    }
+
+    .nav-link span,
+    .sidebar-footer {
+        display: none;
+    }
+
+    .nav-link {
+        justify-content: center;
+        padding: 0;
+    }
+
+    .main-content {
+        margin-left: 65px;
+        padding: 90px 12px 20px;
+    }
+
+    .topbar {
+        padding: 0 12px;
+    }
+
+    .date-time,
+    .profile {
+        display: none;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .right-section {
+        display: flex;
+    }
+
+    .page-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .queue-row,
+    .table-header {
+        grid-template-columns: 0.3fr 0.9fr 1.2fr 0.8fr 0.8fr;
+        gap: 5px;
+        font-size: 9px;
+    }
+
+    .queue-actions {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .call-btn {
+        grid-column: span 2;
+    }
+}
+
+
+/* =========================================
+   SCREEN SIZE MATCHING - MICROSOFT EDGE
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    min-width: 900px;
+    min-height: 100vh;
+    overflow-x: auto;
+}
+
+/* HEADER */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    z-index: 1000;
+}
+
+/* SIDEBAR */
+.sidebar {
+    position: fixed;
+    top: 65px;
+    left: 0;
+    bottom: 0;
+    width: 178px;
+    height: calc(100vh - 65px);
+}
+
+/* MAIN CONTENT */
+.main-content {
+    margin-left: 178px;
+    margin-top: 65px;
+    width: calc(100% - 178px);
+    min-height: calc(100vh - 65px);
+    padding: 25px 29px;
+}
+
+/* ISSUE TICKET LAYOUT */
+.ticket-layout {
+    display: grid;
+    grid-template-columns: 1.43fr 1fr;
+    gap: 19px;
+    width: 100%;
+    align-items: start;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 1100px) {
+    .ticket-layout {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QBSEMS | CTU Ginatilan</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- LOGIN SCREEN -->
+    <section id="loginPage" class="login-page">
+
+        <!-- LEFT SIDE -->
+        <div class="login-left">
+
+            <img src="image.png"
+                 alt="CTU Ginatilan Extension Campus"
+                 class="campus-image">
+
+            <div class="image-overlay"></div>
+
+            <!-- SCHOOL BRAND -->
+            <div class="school-brand">
+
+                <div class="logo-circle">
+                    <img src="ctulogo.jpg" alt="CTU Logo">
+                </div>
+
+                <div class="brand-text">
+                    <strong>CTU - Ginatilan Extension Campus</strong>
+                    <p>School Enrollment System</p>
+                </div>
+
+            </div>
+
+            <!-- WELCOME MESSAGE -->
+            <div class="login-message">
+
+                <span class="eyebrow">ENROLLMENT SERVICES</span>
+
+                <h1>A smoother start to your campus journey.</h1>
+
+                <p>
+                    One connected series for the Registrar, Nurse, and MIS.
+                    Less waiting. More time for what's next.
+                </p>
+
+                <div class="office-tags">
+                    <span>⊙ Registrar</span>
+                    <span>⊙ Nurse</span>
+                    <span>⊙ MIS</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+        <div class="login-right">
+
+            <span class="authorized">
+                ♢ Authorized campus personnel
+            </span>
+
+            <!-- LOGIN FORM -->
+            <form id="loginForm" class="login-form">
+
+                <h1>Welcome Back!</h1>
+
+                <p class="subtitle">
+                    Please login to continue
+                </p>
+
+
+                <!-- USERNAME -->
+                <label for="username">
+                    Username
+
+                    <div class="input-container">
+
+                        <input
+                            type="text"
+                            id="username"
+                            placeholder="Enter your username"
+                            autocomplete="username"
+                            required
+                        >
+
+                        <!-- PERSON ICON -->
+                        <span class="field-icon">
+
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.5"
+                                 stroke-linecap="round"
+                                 stroke-linejoin="round">
+
+                                <circle cx="12" cy="8" r="4"></circle>
+
+                                <path d="M5 21v-2a7 7 0 0 1 14 0v2"></path>
+
+                            </svg>
+
+                        </span>
+
+                    </div>
+                </label>
+
+
+                <!-- PASSWORD -->
+                <label for="password">
+                    Password
+
+                    <div class="input-container">
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <!-- PASSWORD VISIBILITY BUTTON -->
+                        <button
+                            type="button"
+                            class="field-icon password-eye"
+                            id="togglePassword"
+                            aria-label="Show password"
+                            title="Show password"
+                        >
+
+                            <!-- EYE WITH SLASH: PASSWORD HIDDEN -->
+                            <svg
+                                id="eyeSlash"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+
+                                <path d="M3 3l18 18"></path>
+
+                                <path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"></path>
+
+                                <path d="M9.9 5.2A11 11 0 0 1 12 5c6.5 0 10 7 10 7a14 14 0 0 1-3 3.7"></path>
+
+                                <path d="M6.2 6.2C3.4 8.1 2 12 2 12s3.5 7 10 7c1.1 0 2.1-.2 3-.5"></path>
+
+                            </svg>
+
+
+                            <!-- NORMAL EYE: PASSWORD VISIBLE -->
+                            <svg
+                                id="eyeOpen"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                style="display: none;"
+                            >
+
+                                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path>
+
+                                <circle cx="12" cy="12" r="3"></circle>
+
+                            </svg>
+
+                        </button>
+
+                    </div>
+                </label>
+
+
+                <!-- SELECT ROLE -->
+                <label for="role">
+                    Select Role
+
+                    <div class="input-container">
+
+                        <select id="role" required>
+
+                            <option value="Administrator">
+                                Administrator
+                            </option>
+
+                            <option value="Registrar Staff">
+                                Registrar Staff
+                            </option>
+
+                            <option value="Nurse Staff">
+                                Nurse Staff
+                            </option>
+
+                            <option value="MIS Staff">
+                                MIS Staff
+                            </option>
+
+                        </select>
+
+                        <!-- DROPDOWN ICON -->
+                        <span class="field-icon select-icon">
+
+                            <svg viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.5"
+                                 stroke-linecap="round"
+                                 stroke-linejoin="round">
+
+                                <path d="m6 9 6 6 6-6"></path>
+
+                            </svg>
+
+                        </span>
+
+                    </div>
+                </label>
+
+
+                <!-- LOGIN BUTTON -->
+                <button type="submit" class="login-button">
+                    Login
+                </button>
+
+
+                <!-- LOGIN FEEDBACK -->
+                <p id="loginFeedback"
+                   class="login-feedback"
+                   aria-live="polite">
+                </p>
+
+
+                <!-- HELP -->
+                <p class="help">
+                    Need help signing in?
+
+                    <a href="#" id="contactMIS">
+                        Contact MIS
+                    </a>
+                </p>
+
+            </form>
+
+
+            <!-- COPYRIGHT -->
+            <footer>
+                © 2024 CTU – Ginatilan Extension Campus
+            </footer>
+
+        </div>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

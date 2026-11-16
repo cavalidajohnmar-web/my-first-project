@@ -1,0 +1,974 @@
+/* =========================================
+   1. GENERAL SETTINGS
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f0f6fd;
+    color: #102f55;
+    min-height: 100vh;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+
+/* =========================================
+   2. TOP HEADER
+========================================= */
+
+.topbar {
+    height: 71px;
+    width: 100%;
+    background: #082d55;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+    color: white;
+    position: relative;
+    z-index: 10;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 51px;
+    height: 51px;
+    min-width: 51px;
+    background: #f8e900;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.brand h2 {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.brand p {
+    font-size: 12px;
+    color: #d1dfef;
+}
+
+
+/* HEADER ACTIONS */
+
+.top-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.date-time {
+    font-size: 12px;
+    color: #e1eaf5;
+    white-space: nowrap;
+}
+
+.header-menu {
+    position: relative;
+}
+
+.header-icon {
+    width: 32px;
+    height: 35px;
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    position: relative;
+    transition: background 0.2s;
+}
+
+.header-icon:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.header-icon svg {
+    width: 17px;
+    height: 17px;
+    stroke-width: 1.5;
+}
+
+.notification-dot {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 7px;
+    height: 7px;
+    background: #00bd61;
+    border-radius: 50%;
+    border: 1px solid #082d55;
+}
+
+.notification-dot.hidden {
+    display: none;
+}
+
+.profile-button {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    background: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.profile-icon {
+    width: 32px;
+    height: 32px;
+    background: #24577f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 1.4;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 3px;
+}
+
+.profile strong {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.profile small {
+    font-size: 10px;
+    color: #c7d8e9;
+}
+
+
+/* DROPDOWN MENUS */
+
+.dropdown-panel {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    width: 240px;
+    background: white;
+    color: #102f55;
+    padding: 16px;
+    border: 1px solid #d9e6f2;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    z-index: 30;
+}
+
+.notification-dropdown {
+    width: 290px;
+    padding: 14px;
+}
+
+.dropdown-panel[hidden] {
+    display: none;
+}
+
+.dropdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e5edf5;
+}
+
+.dropdown-header h3 {
+    font-size: 14px;
+    margin: 0;
+}
+
+.clear-notif-btn {
+    background: transparent !important;
+    width: auto !important;
+    padding: 0 !important;
+    font-size: 11px;
+    color: #0869d9 !important;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.clear-notif-btn:hover {
+    text-decoration: underline;
+}
+
+.notification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 230px;
+    overflow-y: auto;
+}
+
+.notif-item {
+    padding: 9px 10px;
+    border-radius: 6px;
+    background: #f8fbff;
+    border: 1px solid #edf3f8;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.notif-item:hover {
+    background: #eef5fd;
+}
+
+.notif-item.unread {
+    background: #e8f2ff;
+    border-color: #cfe3fc;
+}
+
+.notif-item p {
+    color: #102f55;
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
+
+.notif-item small {
+    color: #718baa;
+    font-size: 10px;
+}
+
+.profile-panel h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.profile-panel p {
+    color: #6480a3;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.profile-panel button {
+    width: 100%;
+    padding: 9px;
+    background: #e8f2ff;
+    border: none;
+    border-radius: 5px;
+    color: #102f55;
+    cursor: pointer;
+}
+
+
+/* =========================================
+   3. MAIN LAYOUT & SIDEBAR
+========================================= */
+
+.main-layout {
+    display: flex;
+    min-height: calc(100vh - 71px);
+}
+
+.sidebar {
+    width: 198px;
+    min-width: 198px;
+    background: #062649;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: calc(100vh - 71px);
+}
+
+.sidebar-nav {
+    padding: 20px 11px;
+}
+
+.nav-link {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 0 14px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #e5edf6;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.nav-link:hover {
+    background: #12436f;
+}
+
+.nav-link.active {
+    background: #0869d9;
+    color: white;
+}
+
+.nav-link svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 1.5;
+    flex-shrink: 0;
+}
+
+.sidebar-footer {
+    padding: 18px;
+    margin-bottom: 5px;
+}
+
+.sidebar-footer small {
+    font-size: 9px;
+    color: #91aac5;
+}
+
+.sidebar-footer p {
+    font-size: 11px;
+    margin-top: 6px;
+    color: white;
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   4. MAIN CONTENT
+========================================= */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 27px 31px;
+}
+
+
+/* =========================================
+   5. PAGE HEADING
+========================================= */
+
+.page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.page-heading h1 {
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 7px;
+    color: #102f55;
+}
+
+.page-heading p {
+    color: #6985a7;
+    font-size: 13px;
+}
+
+
+/* OFFICE SELECTOR */
+
+.office-select-wrapper {
+    position: relative;
+    width: 150px;
+    height: 38px;
+    flex-shrink: 0;
+}
+
+.office-select-wrapper > svg {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    width: 14px;
+    height: 14px;
+    color: #52749a;
+    pointer-events: none;
+}
+
+.office-select {
+    width: 100%;
+    height: 38px;
+    appearance: none;
+    border: 1px solid #d5e4f5;
+    border-radius: 6px;
+    background: white;
+    color: #102f55;
+    font-size: 12px;
+    padding: 0 10px 0 32px;
+    outline: none;
+    cursor: pointer;
+}
+
+.office-select:focus {
+    border-color: #0869d9;
+}
+
+
+/* =========================================
+   6. STATISTICS CARDS
+========================================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 19px;
+}
+
+.stat-card {
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 18px;
+    border-radius: 9px;
+}
+
+.serving-card {
+    background: #e3f7e9;
+}
+
+.waiting-card {
+    background: #e5f2ff;
+}
+
+.stat-icon {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.serving-card .stat-icon {
+    background: #00b85a;
+    color: white;
+}
+
+.waiting-card .stat-icon {
+    background: transparent;
+    border: 1px solid #0875e8;
+    color: #0875e8;
+}
+
+.stat-icon svg {
+    width: 21px;
+    height: 21px;
+    stroke-width: 1.7;
+}
+
+.stat-card p {
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.serving-card p {
+    color: #008f43;
+}
+
+.waiting-card p {
+    color: #6985a7;
+}
+
+.stat-card h2 {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.serving-card h2 {
+    color: #008f43;
+}
+
+.waiting-card h2 {
+    color: #102f55;
+}
+
+
+/* =========================================
+   7. QUEUE CONTENT LAYOUT
+========================================= */
+
+.queue-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2.5fr) minmax(300px, 1fr);
+    gap: 16px;
+    align-items: start;
+}
+
+
+/* =========================================
+   8. ACTIVE QUEUE CARD
+========================================= */
+
+.active-queue-card {
+    background: white;
+    border: 1px solid #d9e6f2;
+    border-radius: 9px;
+    padding: 17px;
+    box-shadow: 0 5px 15px rgba(27, 65, 105, 0.05);
+    min-width: 0;
+}
+
+.card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 13px;
+}
+
+.card-heading h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.live-badge {
+    background: #e5f2ff;
+    color: #0875e8;
+    font-size: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+
+/* =========================================
+   9. QUEUE TABLE
+========================================= */
+
+.table-header,
+.queue-row {
+    display: grid;
+    grid-template-columns: 0.35fr 1.25fr 2.8fr 1.5fr 1.1fr;
+    align-items: center;
+    gap: 8px;
+}
+
+.table-header {
+    min-height: 32px;
+    padding: 0 10px;
+    background: #f7fafd;
+    color: #6985a7;
+    font-size: 10px;
+}
+
+.queue-row {
+    min-height: 51px;
+    padding: 0 10px;
+    border-radius: 5px;
+    color: #102f55;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.queue-row:nth-child(even) {
+    background: #f0f6fd;
+}
+
+.queue-row:hover {
+    background: #e5f2ff;
+}
+
+.queue-row.selected {
+    background: #e3f7e9;
+}
+
+.queue-row span {
+    min-width: 0;
+}
+
+.queue-row .ticket {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.queue-row .time-issued {
+    color: #6985a7;
+}
+
+
+/* QUEUE STATUS */
+
+.queue-status {
+    justify-self: start;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.status-serving {
+    color: #008f43;
+    background: transparent;
+}
+
+.status-waiting {
+    color: #a66a00;
+    background: #fff2c9;
+}
+
+.status-skipped {
+    color: #a34a00;
+    background: #ffeadc;
+}
+
+
+/* =========================================
+   10. QUEUE ACTION BUTTONS
+========================================= */
+
+.queue-actions {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr 0.55fr;
+    gap: 9px;
+    border-top: 1px solid #e5edf5;
+    padding-top: 12px;
+    margin-top: 12px;
+}
+
+.btn {
+    height: 43px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn svg {
+    width: 15px;
+    height: 15px;
+}
+
+.call-btn {
+    background: #0869d9;
+}
+
+.call-btn:hover {
+    background: #075bbd;
+}
+
+.complete-btn {
+    background: #00b85a;
+}
+
+.complete-btn:hover {
+    background: #009e4d;
+}
+
+.skip-btn {
+    background: #52758e;
+}
+
+.skip-btn:hover {
+    background: #405f76;
+}
+
+
+/* =========================================
+   11. RIGHT SECTION
+========================================= */
+
+.right-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+}
+
+
+/* =========================================
+   12. CURRENT STUDENT CARD
+========================================= */
+
+.current-student-card {
+    background: white;
+    border: 1px solid #d9e6f2;
+    border-radius: 9px;
+    padding: 19px;
+    box-shadow: 0 5px 15px rgba(27, 65, 105, 0.04);
+}
+
+.current-student-card h3 {
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.current-student-card h1 {
+    color: #00b85a;
+    font-size: 29px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.current-student-card p {
+    font-size: 12px;
+    margin-bottom: 7px;
+}
+
+.current-student-card small {
+    color: #6985a7;
+    font-size: 11px;
+}
+
+.current-student-card hr {
+    border: none;
+    height: 1px;
+    background: #e5edf5;
+    margin: 17px 0 13px;
+}
+
+
+/* SERVICE TIME */
+
+.service-time {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 13px;
+    font-size: 11px;
+}
+
+.service-time span {
+    color: #6985a7;
+}
+
+.service-time strong {
+    font-weight: 500;
+    color: #102f55;
+}
+
+
+/* RECALL BUTTON */
+
+.recall-btn {
+    width: 100%;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: #e5f2ff;
+    border: 1px solid #d3e4f8;
+    border-radius: 5px;
+    color: #102f55;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.recall-btn:hover {
+    background: #d6e8fc;
+}
+
+.recall-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+
+/* =========================================
+   13. INFORMATION CARD
+========================================= */
+
+.info-card {
+    background: #e5f2ff;
+    padding: 17px;
+    border-radius: 9px;
+}
+
+.info-card > svg {
+    width: 17px;
+    height: 17px;
+    color: #0875e8;
+    margin-bottom: 13px;
+}
+
+.info-card p {
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.info-card small {
+    display: block;
+    color: #6985a7;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   14. BUTTON INTERACTIONS
+========================================= */
+
+button {
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================================
+   15. SCROLLBAR
+========================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f0f6fd;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #a9bfd6;
+    border-radius: 10px;
+}
+
+
+/* =========================================
+   16. RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .queue-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .right-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    .topbar {
+        padding: 0 12px;
+    }
+
+    .brand h2 {
+        font-size: 14px;
+    }
+
+    .brand p {
+        font-size: 10px;
+    }
+
+    .date-time {
+        display: none;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-width: 100%;
+        position: relative;
+    }
+
+    .sidebar-nav {
+        display: flex;
+        overflow-x: auto;
+        padding: 10px;
+    }
+
+    .nav-link {
+        min-width: max-content;
+        margin: 0 4px;
+    }
+
+    .sidebar-footer {
+        display: none;
+    }
+
+    .main-layout {
+        flex-direction: column;
+    }
+
+    .main-content {
+        padding: 20px 13px;
+    }
+
+    .page-heading h1 {
+        font-size: 21px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .right-section {
+        display: flex;
+    }
+
+    .page-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .office-select-wrapper {
+        width: 100%;
+    }
+
+    .table-header,
+    .queue-row {
+        grid-template-columns: 25px 85px minmax(90px, 1fr) 75px 75px;
+        min-width: 480px;
+    }
+
+    .active-queue-card {
+        overflow-x: auto;
+    }
+
+    .queue-actions {
+        min-width: 450px;
+    }
+
+}

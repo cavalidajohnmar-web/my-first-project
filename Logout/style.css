@@ -1,0 +1,387 @@
+/* ======================================
+   1. GENERAL RESETS & BASE STYLES
+====================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f0f6fd;
+    color: #102f55;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    font: inherit;
+}
+
+
+/* ======================================
+   2. TOP HEADER NAVIGATION STYLING
+====================================== */
+.top-header {
+    height: 71px;
+    width: 100%;
+    background: #082d55;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+    color: white;
+    position: relative;
+    z-index: 10;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-container {
+    width: 51px;
+    height: 51px;
+    background: #f8e900;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.brand-text h2 {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.brand-text p {
+    font-size: 12px;
+    color: #d1dfef;
+}
+
+.top-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.date-time {
+    font-size: 12px;
+    color: #e1eaf5;
+    white-space: nowrap;
+}
+
+.header-menu {
+    position: relative;
+}
+
+.icon-button {
+    width: 32px;
+    height: 35px;
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    position: relative;
+    transition: background 0.2s;
+}
+
+.icon-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.icon-button svg {
+    width: 17px;
+    height: 17px;
+    stroke-width: 1.5;
+}
+
+.notification-dot {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 7px;
+    height: 7px;
+    background: #00bd61;
+    border-radius: 50%;
+    border: 1px solid #082d55;
+}
+
+.notification-dot.hidden {
+    display: none;
+}
+
+.profile-button {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    background: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.admin-avatar {
+    width: 32px;
+    height: 32px;
+    background: #24577f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-avatar svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 1.4;
+}
+
+.admin-label {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 3px;
+}
+
+.admin-label strong {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.admin-label small {
+    font-size: 10px;
+    color: #c7d8e9;
+}
+
+
+/* ======================================
+   3. DROPDOWN PANELS
+====================================== */
+.dropdown-panel {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    width: 240px;
+    background: white;
+    color: #102f55;
+    padding: 16px;
+    border: 1px solid #d9e6f2;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    z-index: 30;
+}
+
+.notification-dropdown {
+    width: 290px;
+    padding: 14px;
+}
+
+.dropdown-panel[hidden] {
+    display: none;
+}
+
+.dropdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e5edf5;
+}
+
+.dropdown-header h3 {
+    font-size: 14px;
+    margin: 0;
+}
+
+.clear-notif-btn {
+    background: transparent !important;
+    width: auto !important;
+    padding: 0 !important;
+    font-size: 11px;
+    color: #0869d9 !important;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.clear-notif-btn:hover {
+    text-decoration: underline;
+}
+
+.notification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 230px;
+    overflow-y: auto;
+}
+
+.notif-item {
+    padding: 9px 10px;
+    border-radius: 6px;
+    background: #f8fbff;
+    border: 1px solid #edf3f8;
+    cursor: pointer;
+}
+
+.notif-item.unread {
+    background: #e8f2ff;
+    border-color: #cfe3fc;
+}
+
+.notif-item p {
+    color: #102f55;
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
+
+.notif-item small {
+    color: #718baa;
+    font-size: 10px;
+}
+
+.profile-panel h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.profile-panel p {
+    color: #6480a3;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.profile-panel button {
+    width: 100%;
+    padding: 9px;
+    background: #e8f2ff;
+    border: none;
+    border-radius: 5px;
+    color: #102f55;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+/* ======================================
+   4. LOGOUT MODAL STYLING
+====================================== */
+.logout-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+}
+
+.logout-modal-card {
+    background: white;
+    border: 1px solid #e1ecf5;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 480px;
+    padding: 40px 35px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(27, 65, 105, 0.06);
+}
+
+.modal-icon-wrap {
+    width: 64px;
+    height: 64px;
+    background: #e8f2ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto;
+}
+
+.modal-icon-wrap svg {
+    width: 28px;
+    height: 28px;
+    color: #0869d9;
+    stroke-width: 2;
+}
+
+.logout-modal-card h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #102f55;
+    margin-bottom: 12px;
+}
+
+.modal-main-text {
+    font-size: 13px;
+    color: #517196;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    padding: 0 10px;
+}
+
+.modal-sub-text {
+    font-size: 12px;
+    color: #839bb8;
+    line-height: 1.4;
+    margin-bottom: 30px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.modal-actions button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, opacity 0.2s;
+    border: none;
+}
+
+.btn-cancel {
+    background: #e8f2ff;
+    color: #0869d9;
+}
+
+.btn-cancel:hover {
+    background: #d8e8fc;
+}
+
+.btn-logout {
+    background: #0869d9;
+    color: white;
+}
+
+.btn-logout:hover {
+    background: #075bbd;
+}
+
+.page-footer-note {
+    margin-top: 25px;
+    font-size: 12px;
+    color: #718baa;
+    letter-spacing: 0.3px;
+}

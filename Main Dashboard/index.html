@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QBSEMS | Main Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =================================
+         TOP HEADER
+    ================================== -->
+
+    <header class="top-header">
+
+        <div class="brand">
+
+            <div class="logo-container">
+                <img src="ctulogo(4).jpg"
+                     alt="CTU Ginatilan Logo">
+            </div>
+
+            <div class="brand-text">
+                <h2>CTU – Ginatilan</h2>
+                <p>Extension Campus · School Enrollment System</p>
+            </div>
+
+        </div>
+
+
+        <div class="top-actions">
+
+            <!-- DATE AND TIME -->
+            <span class="date-time" id="dateTime"></span>
+
+
+            <!-- NOTIFICATION -->
+            <div class="header-menu">
+
+                <button class="icon-button"
+                        id="notificationBtn"
+                        type="button"
+                        aria-label="Notifications">
+
+                    <i data-lucide="bell"></i>
+                    <span class="notification-dot" id="notificationDot"></span>
+
+                </button>
+
+                <div class="dropdown-panel notification-dropdown"
+                    id="notificationPanel"
+                    hidden>
+
+                    <div class="dropdown-header">
+                        <h3>Notifications</h3>
+                        <button type="button" class="clear-notif-btn" id="clearNotifBtn">Mark all read</button>
+                    </div>
+
+                    <div class="notification-list" id="notificationList">
+                        <div class="notif-item unread">
+                            <p><strong>Registrar:</strong> Now serving ticket R-003.</p>
+                            <small>Just now</small>
+                        </div>
+                        <div class="notif-item unread">
+                            <p><strong>Nurse:</strong> New ticket N-004 issued to waiting queue.</p>
+                            <small>4 mins ago</small>
+                        </div>
+                        <div class="notif-item">
+                            <p><strong>MIS:</strong> 4 students currently waiting in queue.</p>
+                            <small>12 mins ago</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ADMIN PROFILE -->
+            <div class="header-menu">
+
+                <button class="profile-button"
+                        id="profileBtn"
+                        type="button">
+
+                    <span class="admin-avatar">
+                        <i data-lucide="user-round"></i>
+                    </span>
+
+                    <span class="admin-label">
+                        <strong>Admin</strong>
+                        <small>Administrator</small>
+                    </span>
+
+                </button>
+
+                <div class="dropdown-panel profile-panel"
+                    id="profilePanel"
+                    hidden>
+
+                    <h3>Administrator</h3>
+                    <p>CTU – Ginatilan</p>
+
+                    <button type="button" id="profileLogout">
+                        Logout
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================
+         MAIN LAYOUT
+    ================================== -->
+
+    <div class="main-layout">
+
+
+        <!-- =================================
+             SIDEBAR
+        ================================== -->
+
+        <aside class="sidebar">
+
+            <nav class="sidebar-nav">
+
+                <a href="Main Dashboard.html" class="nav-link active">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Main Dashboard</span>
+                </a>
+
+                <a href="Issue Ticket.html" class="nav-link">
+                    <i data-lucide="ticket"></i>
+                    <span>Issue Ticket</span>
+                </a>
+
+                <a href="Console Nurse.html" class="nav-link">
+                    <i data-lucide="users-round"></i>
+                    <span>Queue Management</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i data-lucide="clipboard-list"></i>
+                    <span>Medical Requirements</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i data-lucide="chart-no-axes-column"></i>
+                    <span>Reports</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i data-lucide="settings"></i>
+                    <span>Settings</span>
+                </a>
+
+                <a href="#" class="nav-link" id="sidebarLogout">
+                    <i data-lucide="log-out"></i>
+                    <span>Logout</span>
+                </a>
+
+            </nav>
+
+
+            <!-- SIDEBAR FOOTER -->
+
+            <div class="sidebar-footer">
+
+                <small>SCHOOL ENROLLMENT SYSTEM</small>
+
+                <p>Mon – Fri · 8:00 AM – 5:00 PM</p>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =================================
+             MAIN CONTENT
+        ================================== -->
+
+        <main class="main-content">
+
+
+            <!-- PAGE TITLE -->
+
+            <div class="page-heading-flex">
+                <div class="page-heading">
+                    <h1>Queue Overview</h1>
+                    <p>Monitor enrollment services and today's queue activity.</p>
+                </div>
+
+                <button type="button" class="offices-online-badge" id="globalStatusBadge">
+                    All offices online
+                </button>
+            </div>
+
+
+
+            <!-- =================================
+                 TOP 3 OFFICE QUEUE CARDS
+            ================================== -->
+
+            <section class="office-cards-grid">
+
+                <!-- REGISTRAR CARD -->
+                <div class="queue-hero-card registrar-card" data-office="Registrar">
+                    <div class="hero-card-title">
+                        <i data-lucide="clipboard-list"></i>
+                        <span>Registrar</span>
+                    </div>
+
+                    <small class="hero-label">Now Serving</small>
+                    <h2 class="hero-ticket" id="registrarServing">R-003</h2>
+
+                    <div class="hero-card-footer">
+                        <span>Waiting: <strong id="registrarWaiting">5</strong></span>
+                        <span>Next: <strong id="registrarNext">R-004</strong></span>
+                    </div>
+                </div>
+
+
+                <!-- NURSE CARD -->
+                <div class="queue-hero-card nurse-card" data-office="Nurse">
+                    <div class="hero-card-title">
+                        <i data-lucide="heart-pulse"></i>
+                        <span>Nurse</span>
+                    </div>
+
+                    <small class="hero-label">Now Serving</small>
+                    <h2 class="hero-ticket" id="nurseServing">N-001</h2>
+
+                    <div class="hero-card-footer">
+                        <span>Waiting: <strong id="nurseWaiting">3</strong></span>
+                        <span>Next: <strong id="nurseNext">N-002</strong></span>
+                    </div>
+                </div>
+
+
+                <!-- MIS CARD -->
+                <div class="queue-hero-card mis-card" data-office="MIS">
+                    <div class="hero-card-title">
+                        <i data-lucide="monitor"></i>
+                        <span>MIS</span>
+                    </div>
+
+                    <small class="hero-label">Now Serving</small>
+                    <h2 class="hero-ticket" id="misServing">M-002</h2>
+
+                    <div class="hero-card-footer">
+                        <span>Waiting: <strong id="misWaiting">4</strong></span>
+                        <span>Next: <strong id="misNext">M-003</strong></span>
+                    </div>
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================
+                 LOWER DASHBOARD GRID
+            ================================== -->
+
+            <div class="dashboard-lower-grid">
+
+
+                <!-- LEFT COLUMN: TODAY'S SUMMARY & OFFICE STATUS -->
+                <div class="dashboard-left-col">
+
+                    <h2 class="section-heading">Today’s Summary</h2>
+
+                    <!-- 3 SUMMARY STAT CARDS -->
+                    <div class="summary-stats-grid">
+
+                        <div class="summary-card">
+                            <div class="summary-card-top">
+                                <span>Total Queues</span>
+                                <i data-lucide="wallet-cards"></i>
+                            </div>
+                            <h3 id="totalQueuesCount">48</h3>
+                            <small>Tickets issued today</small>
+                        </div>
+
+                        <div class="summary-card">
+                            <div class="summary-card-top">
+                                <span>Served</span>
+                                <i data-lucide="user-check"></i>
+                            </div>
+                            <h3 id="servedCount">28</h3>
+                            <small>Students assisted</small>
+                        </div>
+
+                        <div class="summary-card">
+                            <div class="summary-card-top">
+                                <span>Not Served</span>
+                                <i data-lucide="users"></i>
+                            </div>
+                            <h3 id="notServedCount">20</h3>
+                            <small>Waiting and in progress</small>
+                        </div>
+
+                    </div>
+
+
+                    <!-- OFFICE STATUS TABLE CARD -->
+                    <div class="form-card office-status-card">
+
+                        <div class="status-card-header">
+                            <h3>Office Status</h3>
+                            <span id="lastUpdatedText">Updated just now</span>
+                        </div>
+
+                        <div class="office-status-list">
+
+                            <!-- REGISTRAR ROW -->
+                            <div class="office-status-row">
+                                <div class="office-name-col">
+                                    <i data-lucide="clipboard-list" class="icon-blue"></i>
+                                    <span>Registrar</span>
+                                </div>
+
+                                <div class="office-wait-col" id="registrarStatusWait">
+                                    5 students waiting
+                                </div>
+
+                                <div class="office-badge-col">
+                                    <button type="button"
+                                            class="accepting-badge active"
+                                            data-office-toggle="Registrar">
+                                        Accepting students
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- NURSE ROW -->
+                            <div class="office-status-row">
+                                <div class="office-name-col">
+                                    <i data-lucide="heart-pulse" class="icon-green"></i>
+                                    <span>Nurse</span>
+                                </div>
+
+                                <div class="office-wait-col" id="nurseStatusWait">
+                                    3 students waiting
+                                </div>
+
+                                <div class="office-badge-col">
+                                    <button type="button"
+                                            class="accepting-badge active"
+                                            data-office-toggle="Nurse">
+                                        Accepting students
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- MIS ROW -->
+                            <div class="office-status-row">
+                                <div class="office-name-col">
+                                    <i data-lucide="monitor" class="icon-purple"></i>
+                                    <span>MIS</span>
+                                </div>
+
+                                <div class="office-wait-col" id="misStatusWait">
+                                    4 students waiting
+                                </div>
+
+                                <div class="office-badge-col">
+                                    <button type="button"
+                                            class="accepting-badge active"
+                                            data-office-toggle="MIS">
+                                        Accepting students
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- RIGHT COLUMN: QUICK ACTIONS & INFO CARD -->
+                <div class="dashboard-right-col">
+
+                    <h2 class="section-heading">Quick Actions</h2>
+
+                    <div class="form-card quick-actions-card">
+
+                        <button type="button" class="primary-action-btn" id="btnIssueNewTicket">
+                            <i data-lucide="ticket"></i>
+                            Issue New Ticket
+                        </button>
+
+                        <button type="button" class="secondary-action-btn" id="btnViewReports">
+                            <i data-lucide="chart-no-axes-column"></i>
+                            View Reports
+                        </button>
+
+                        <button type="button" class="outline-action-btn" id="btnWaitingRoom">
+                            <i data-lucide="monitor"></i>
+                            Open Waiting Room Display
+                        </button>
+
+                    </div>
+
+
+                    <!-- INFORMATION CARD -->
+                    <div class="information-card">
+
+                        <div class="info-icon">
+                            <i data-lucide="info"></i>
+                        </div>
+
+                        <h3>Keep enrollment moving</h3>
+
+                        <p>
+                            Check each student's medical requirements
+                            before completing their queue.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =================================
+         WAITING ROOM DISPLAY MODAL
+    ================================== -->
+
+    <div class="modal-overlay" id="waitingRoomModal" aria-hidden="true">
+        <div class="modal-card waiting-modal-card">
+            <button class="close-modal" id="closeWaitingModal" type="button">×</button>
+
+            <span class="modal-badge">LIVE MONITOR PREVIEW</span>
+            <h2>CTU – Ginatilan Waiting Room</h2>
+            <p class="modal-subtitle">Currently serving queue numbers across all enrollment offices</p>
+
+            <div class="modal-live-grid">
+                <div class="modal-office-box blue-box">
+                    <small>REGISTRAR</small>
+                    <h1 id="modalRegistrar">R-003</h1>
+                    <span>Next: <strong id="modalRegistrarNext">R-004</strong></span>
+                </div>
+
+                <div class="modal-office-box green-box">
+                    <small>NURSE</small>
+                    <h1 id="modalNurse">N-001</h1>
+                    <span>Next: <strong id="modalNurseNext">N-002</strong></span>
+                </div>
+
+                <div class="modal-office-box purple-box">
+                    <small>MIS</small>
+                    <h1 id="modalMis">M-002</h1>
+                    <span>Next: <strong id="modalMisNext">M-003</strong></span>
+                </div>
+            </div>
+
+            <button type="button" class="done-button" id="doneWaitingModal">Close Display</button>
+        </div>
+    </div>
+
+
+    <!-- LUCIDE ICON LIBRARY -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QBSEMS | Nurse Console</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="topbar">
+    <div class="brand">
+        <div class="logo">
+            <img src="ctulogo(2).jpg" alt="CTU Logo">
+        </div>
+        <div>
+            <h2>CTU – Ginatilan</h2>
+            <p>Extension Campus · School Enrollment System</p>
+        </div>
+    </div>
+
+    <div class="top-right">
+        <span class="date-time" id="dateTime">Oct 16, 2024 · 09:41 AM</span>
+
+        <button class="header-icon" aria-label="Notifications">
+            <i data-lucide="bell"></i>
+        </button>
+
+        <div class="profile-icon">
+            <i data-lucide="user-round"></i>
+        </div>
+
+        <div class="profile">
+            <strong>Nurse Staff</strong>
+            <small>Nurse Staff</small>
+        </div>
+    </div>
+</header>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <nav class="sidebar-nav">
+
+        <a href="#" class="nav-link">
+            <i data-lucide="layout-dashboard"></i>
+            <span>Main Dashboard</span>
+        </a>
+
+        <a href="#" class="nav-link">
+            <i data-lucide="ticket"></i>
+            <span>Issue Ticket</span>
+        </a>
+
+        <a href="queue-management.html" class="nav-link active">
+            <i data-lucide="users-round"></i>
+            <span>Queue Management</span>
+        </a>
+
+        <a href="#" class="nav-link">
+            <i data-lucide="clipboard-list"></i>
+            <span>Medical Requirements</span>
+        </a>
+
+        <a href="#" class="nav-link">
+            <i data-lucide="chart-no-axes-column"></i>
+            <span>Reports</span>
+        </a>
+
+        <a href="#" class="nav-link">
+            <i data-lucide="settings"></i>
+            <span>Settings</span>
+        </a>
+
+        <a href="#" class="nav-link">
+            <i data-lucide="log-out"></i>
+            <span>Logout</span>
+        </a>
+
+    </nav>
+
+    <div class="sidebar-footer">
+        <small>SCHOOL ENROLLMENT SYSTEM</small>
+        <p>Mon – Fri · 8:00 AM – 5:00 PM</p>
+    </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+    <div class="page-heading">
+        <div>
+            <h1>Nurse Console</h1>
+            <p>Manage medical screening and assist students in the queue.</p>
+        </div>
+
+        <a href="queue-management.html" class="office-open">
+            Office open
+        </a>
+    </div>
+
+    <!-- STATISTICS -->
+    <section class="stats">
+
+        <div class="stat-card serving-card">
+            <p>Now Serving</p>
+            <h2 id="nowServing">N-001</h2>
+        </div>
+
+        <div class="stat-card waiting-card">
+            <p>Students Waiting</p>
+            <h2 id="waitingCount">4</h2>
+        </div>
+
+    </section>
+
+    <!-- MAIN LAYOUT -->
+    <section class="console-layout">
+
+        <!-- LEFT QUEUE -->
+        <div class="left-section">
+
+            <div class="student-queue-card">
+
+                <!-- STUDENT TABS -->
+                <div class="tabs">
+                    <button class="tab active" data-filter="Freshman">
+                        Freshmen
+                    </button>
+
+                    <button class="tab" data-filter="Old Student">
+                        Old Students
+                    </button>
+                </div>
+
+                <!-- TABLE HEADER -->
+                <div class="student-table-header">
+                    <span>STUDENT NAME</span>
+                    <span>TYPE</span>
+                    <span>STATUS</span>
+                </div>
+
+                <!-- STUDENT LIST -->
+                <div id="studentList"></div>
+
+            </div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="console-actions">
+
+                <button class="action-btn call-btn" id="callNext">
+                    <i data-lucide="volume-2"></i>
+                    Call Next
+                </button>
+
+                <button class="action-btn skip-btn" id="skipStudent">
+                    Skip
+                </button>
+
+                <button class="action-btn transfer-btn" id="transferStudent">
+                    <i data-lucide="repeat-2"></i>
+                    Transfer
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT STUDENT DETAILS -->
+        <div class="details-card">
+
+            <div class="details-heading">
+                <h3>Student Details</h3>
+                <i data-lucide="clipboard-list"></i>
+            </div>
+
+            <div class="student-profile">
+
+                <div class="student-avatar">
+                    <i data-lucide="user-round"></i>
+                </div>
+
+                <div>
+                    <h3 id="detailName">John Mar Cavalida</h3>
+                    <p id="detailTicket">Ticket N-001 · Freshman</p>
+                    <small id="detailType">Type: New Student</small>
+                </div>
+
+            </div>
+
+            <hr>
+
+            <h3 class="requirements-title">Medical Requirements</h3>
+
+            <div class="requirements" id="requirements">
+
+                <label>
+                    <input type="checkbox" checked>
+                    <span class="check-icon"><i data-lucide="check"></i></span>
+                    Physical Examination
+                </label>
+
+                <label>
+                    <input type="checkbox" checked>
+                    <span class="check-icon"><i data-lucide="check"></i></span>
+                    Laboratory Results
+                </label>
+
+                <label>
+                    <input type="checkbox" checked>
+                    <span class="check-icon"><i data-lucide="check"></i></span>
+                    Chest X-ray
+                </label>
+
+                <label>
+                    <input type="checkbox" checked>
+                    <span class="check-icon"><i data-lucide="check"></i></span>
+                    Other Documents
+                </label>
+
+            </div>
+
+            <div class="status-section">
+                <label for="screeningStatus">Status</label>
+
+                <select id="screeningStatus">
+                    <option>Documents Under Review</option>
+                    <option>Requirements Complete</option>
+                    <option>Needs Additional Documents</option>
+                </select>
+            </div>
+
+            <div class="notes-section">
+                <label for="studentNotes">Notes</label>
+
+                <textarea id="studentNotes"
+                    placeholder="Enter screening notes...">Review all submitted medical documents before completing the screening.</textarea>
+            </div>
+
+            <div class="details-actions">
+
+                <button class="save-btn" id="saveStudent">
+                    Save
+                </button>
+
+                <button class="complete-screening-btn" id="completeScreening">
+                    <i data-lucide="check"></i>
+                    Complete Screening
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

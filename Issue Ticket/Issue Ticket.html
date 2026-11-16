@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QBSEMS | CTU Ginatilan</title>
+
+    <link rel="stylesheet" href="Issue Ticket.css">
+</head>
+
+<body>
+
+    <!-- =================================
+         TOP HEADER
+    ================================== -->
+
+    <header class="top-header">
+
+        <div class="brand">
+
+            <div class="logo-container">
+                <img src="ctulogo(1).jpg"
+                     alt="CTU Ginatilan Logo">
+            </div>
+
+            <div class="brand-text">
+                <h2>CTU – Ginatilan</h2>
+                <p>Extension Campus · School Enrollment System</p>
+            </div>
+
+        </div>
+
+
+        <div class="top-actions">
+
+            <!-- DATE AND TIME -->
+            <span class="date-time" id="dateTime"></span>
+
+
+            <!-- NOTIFICATION -->
+            <div class="header-menu">
+
+                <button class="icon-button"
+                        id="notificationBtn"
+                        type="button"
+                        aria-label="Notifications">
+
+                    <i data-lucide="bell"></i>
+                    <span class="notification-dot" id="notificationDot"></span>
+
+                </button>
+
+                <div class="dropdown-panel notification-dropdown"
+                    id="notificationPanel"
+                    hidden>
+
+                    <div class="dropdown-header">
+                        <h3>Notifications</h3>
+                        <button type="button" class="clear-notif-btn" id="clearNotifBtn">Mark all read</button>
+                    </div>
+
+                    <div class="notification-list" id="notificationList">
+                        <div class="notif-item unread">
+                            <p><strong>Registrar:</strong> Now serving ticket R-003.</p>
+                            <small>Just now</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ADMIN PROFILE -->
+            <div class="header-menu">
+
+                <button class="profile-button"
+                        id="profileBtn"
+                        type="button">
+
+                    <span class="admin-avatar">
+                        <i data-lucide="user-round"></i>
+                    </span>
+
+                    <span class="admin-label">
+                        <strong>Admin</strong>
+                        <small>Administrator</small>
+                    </span>
+
+                </button>
+
+                <div class="dropdown-panel profile-panel"
+                    id="profilePanel"
+                    hidden>
+
+                    <h3>Administrator</h3>
+                    <p>CTU – Ginatilan</p>
+
+                    <button type="button" id="profileLogout">
+                        Logout
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================
+         MAIN LAYOUT
+    ================================== -->
+
+    <div class="main-layout">
+
+
+        <!-- =================================
+             SIDEBAR
+        ================================== -->
+
+        <aside class="sidebar">
+
+            <nav class="sidebar-nav">
+
+                <a href="Main Dashboard.html" class="nav-link">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Main Dashboard</span>
+                </a>
+
+                <a href="Issue Ticket.html" class="nav-link active">
+                    <i data-lucide="ticket"></i>
+                    <span>Issue Ticket</span>
+                </a>
+
+                <a href="Console Nurse.html" class="nav-link">
+                    <i data-lucide="users-round"></i>
+                    <span>Queue Management</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i data-lucide="clipboard-list"></i>
+                    <span>Medical Requirements</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i data-lucide="chart-no-axes-column"></i>
+                    <span>Reports</span>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <i data-lucide="settings"></i>
+                    <span>Settings</span>
+                </a>
+
+                <a href="#" class="nav-link" id="sidebarLogout">
+                    <i data-lucide="log-out"></i>
+                    <span>Logout</span>
+                </a>
+
+            </nav>
+
+
+            <!-- SIDEBAR FOOTER -->
+
+            <div class="sidebar-footer">
+
+                <small>SCHOOL ENROLLMENT SYSTEM</small>
+
+                <p>Mon – Fri · 8:00 AM – 5:00 PM</p>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =================================
+             MAIN CONTENT
+        ================================== -->
+
+        <main class="main-content">
+
+
+            <!-- PAGE TITLE -->
+
+            <div class="page-heading">
+
+                <h1>Issue New Ticket</h1>
+
+                <p>
+                    Register a student, select course program, and choose an enrollment office.
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================
+                 CONTENT GRID
+            ================================== -->
+
+            <div class="content-grid">
+
+
+                <!-- =================================
+                     LEFT FORM CARD
+                ================================== -->
+
+                <section class="form-card">
+
+                    <form id="ticketForm">
+
+
+                        <!-- STUDENT TYPE -->
+
+                        <div class="student-tabs">
+
+                            <button type="button"
+                                    class="tab active"
+                                    data-type="Freshman">
+
+                                Freshman
+
+                            </button>
+
+
+                            <button type="button"
+                                    class="tab"
+                                    data-type="Old Student">
+
+                                Old Student
+
+                            </button>
+
+                        </div>
+
+
+
+                        <!-- STUDENT NAME -->
+
+                        <div class="form-group">
+
+                            <label for="studentName">
+                                Student Name (Optional)
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <input
+                                    type="text"
+                                    id="studentName"
+                                    placeholder="e.g. John Mar Cavalida"
+                                >
+
+                                <span class="input-icon">
+                                    <i data-lucide="user-round"></i>
+                                </span>
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- COURSE PROGRAM -->
+
+                        <div class="form-group">
+
+                            <label for="courseProgram">
+                                Course / Program
+                            </label>
+
+                            <div class="select-wrapper">
+
+                                <select id="courseProgram" required>
+
+                                    <option value="BSIT">Bachelor of Science in Information Technology (BSIT)</option>
+                                    <option value="BIT-CT">Bachelor of Industrial Technology major in Computer Technology (BIT-CT)</option>
+                                    <option value="DMXT">Diploma in Mechatronics Technology (DMxT)</option>
+
+                                </select>
+
+                                <i data-lucide="chevron-down" class="select-icon"></i>
+
+                            </div>
+
+                            <small>Select student's program curriculum.</small>
+
+                        </div>
+
+
+
+                        <!-- ENROLLMENT OFFICE -->
+
+                        <div class="form-group">
+
+                            <label for="office">
+                                Enrollment Office
+                            </label>
+
+                            <div class="select-wrapper">
+
+                                <select id="office" required>
+
+                                    <option value="Nurse">Nurse</option>
+                                    <option value="Registrar">Registrar</option>
+                                    <option value="MIS">MIS</option>
+
+                                </select>
+
+                                <i data-lucide="chevron-down"
+                                class="select-icon"></i>
+
+                            </div>
+
+                            <small>
+                                Select the office the student needs to visit.
+                            </small>
+
+                        </div>
+
+
+
+                        <!-- DIVIDER -->
+
+                        <div class="section-divider"></div>
+
+
+
+                        <!-- MEDICAL REQUIREMENTS -->
+
+                        <div class="requirements">
+
+                            <h2>Medical Requirements</h2>
+
+
+                            <label class="requirement-item">
+
+                                <input
+                                    type="checkbox"
+                                    name="requirements"
+                                    value="Physical Examination"
+                                >
+
+                                <span>Physical Examination</span>
+
+                            </label>
+
+
+                            <label class="requirement-item">
+
+                                <input
+                                    type="checkbox"
+                                    name="requirements"
+                                    value="Laboratory Results"
+                                >
+
+                                <span>Laboratory Results</span>
+
+                            </label>
+
+
+                            <label class="requirement-item">
+
+                                <input
+                                    type="checkbox"
+                                    name="requirements"
+                                    value="Chest X-ray"
+                                >
+
+                                <span>Chest X-ray (if required)</span>
+
+                            </label>
+
+
+                            <label class="requirement-item">
+
+                                <input
+                                    type="checkbox"
+                                    name="requirements"
+                                    value="Other Documents"
+                                >
+
+                                <span>Other Documents</span>
+
+                            </label>
+
+                        </div>
+
+
+
+                        <!-- FORM BUTTONS -->
+
+                        <div class="form-buttons">
+
+                            <button type="reset"
+                                    class="cancel-button">
+
+                                Cancel
+
+                            </button>
+
+
+                            <button type="submit" class="issue-button">
+
+                                <i data-lucide="ticket"></i>
+
+                                Issue Ticket
+
+                            </button>
+                        </div>
+
+
+                    </form>
+
+                </section>
+
+
+
+                <!-- =================================
+                     RIGHT SIDE
+                ================================== -->
+
+                <section class="right-column">
+
+
+                    <!-- OFFICE INFORMATION CARD -->
+
+                    <div class="office-card">
+
+
+                        <div class="office-heading">
+
+                            <div class="office-icon">
+                                <i data-lucide="heart-pulse"></i>
+                            </div>
+
+
+                            <div>
+
+                                <h2 id="officeTitle">
+                                    Nurse
+                                </h2>
+
+                                <p id="officeDescription">
+                                    Medical screening & clearance
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="office-divider"></div>
+
+
+
+                        <!-- OFFICE STATUS -->
+
+                        <div class="office-row">
+
+                            <span>Office Status</span>
+
+                            <span class="status-badge">
+                                Accepting students
+                            </span>
+
+                        </div>
+
+
+
+                        <!-- NOW SERVING -->
+
+                        <div class="office-row">
+
+                            <span>Now Serving</span>
+
+                            <strong class="serving-number"
+                                    id="nowServing">
+
+                                N-001
+
+                            </strong>
+
+                        </div>
+
+
+
+                        <!-- ESTIMATED WAIT -->
+
+                        <div class="office-row">
+
+                            <span>Estimated Wait</span>
+
+                            <strong id="waitTime">
+                                ~ 15 minutes
+                            </strong>
+
+                        </div>
+
+
+
+                        <p class="office-note">
+
+                            Queue numbers are assigned automatically
+                            when a ticket is issued.
+
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- INFORMATION CARD -->
+
+                    <div class="information-card">
+
+                        <div class="info-icon">
+                            <i data-lucide="info"></i>
+                        </div>
+
+                        <h3>Before issuing a ticket</h3>
+
+                        <p>
+
+                            Confirm the student type, course, and office.
+                            Students can scan the ticket’s QR code
+                            to follow their queue on their phone.
+
+                        </p>
+
+                        <strong>
+                            One ticket per student, per office.
+                        </strong>
+
+                    </div>
+
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =================================
+         TICKET CONFIRMATION MODAL
+    ================================== -->
+
+    <div class="modal-overlay"
+         id="ticketModal"
+         aria-hidden="true">
+
+        <div class="modal-card">
+
+            <button class="close-modal"
+                    id="closeModal"
+                    type="button">
+
+                ×
+
+            </button>
+
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+
+            <h2>Ticket Successfully Issued!</h2>
+
+            <p class="modal-subtitle">
+                The student has been added to the waiting queue.
+            </p>
+
+
+
+            <!-- GENERATED TICKET -->
+
+            <div class="generated-ticket">
+
+                <small>YOUR QUEUE NUMBER</small>
+
+                <h1 id="generatedTicket">
+                    N-001
+                </h1>
+
+            </div>
+
+
+
+            <!-- STUDENT DETAILS -->
+
+            <div class="ticket-details">
+
+                <div>
+                    <span>Student Name</span>
+                    <strong id="ticketStudent">Student</strong>
+                </div>
+
+
+                <div>
+                    <span>Course Program</span>
+                    <strong id="ticketCourse">BSIT</strong>
+                </div>
+
+
+                <div>
+                    <span>Student Type</span>
+                    <strong id="ticketType">Freshman</strong>
+                </div>
+
+
+                <div>
+                    <span>Enrollment Office</span>
+                    <strong id="ticketOffice">Nurse</strong>
+                </div>
+
+            </div>
+
+
+
+            <!-- SELECTED REQUIREMENTS -->
+
+            <div class="selected-requirements">
+
+                <strong>Selected Requirements</strong>
+
+                <ul id="ticketRequirements"></ul>
+
+            </div>
+
+
+
+            <p class="modal-footer-text">
+                Please wait for your queue number to be called.
+            </p>
+
+
+            <button type="button"
+                    class="done-button"
+                    id="doneButton">
+
+                Done
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- LUCIDE ICON LIBRARY -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- JAVASCRIPT -->
+    <script src="Issue Ticket.js"></script>
+
+</body>
+
+</html>

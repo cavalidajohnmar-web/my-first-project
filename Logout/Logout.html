@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QBSEMS | Logout Confirmation</title>
+    <!-- Stylesheet connection -->
+    <link rel="stylesheet" href="Logout.css">
+    <!-- Lucide icons library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <!-- =========================================
+         TOP HEADER SECTION
+    ========================================= -->
+    <header class="top-header">
+        <div class="brand">
+            <div class="logo-container">
+                <img src="ctulogo(9).jpg" alt="CTU Ginatilan Logo">
+            </div>
+            <div class="brand-text">
+                <h2>CTU – Ginatilan</h2>
+                <p>Extension Campus · School Enrollment System</p>
+            </div>
+        </div>
+
+        <div class="top-actions">
+            <!-- Live date and time display with ticking seconds -->
+            <span class="date-time" id="dateTime"></span>
+
+            <!-- Notifications Dropdown Menu -->
+            <div class="header-menu">
+                <button class="icon-button" id="notificationBtn" type="button" aria-label="Notifications">
+                    <i data-lucide="bell"></i>
+                    <span class="notification-dot" id="notificationDot"></span>
+                </button>
+
+                <div class="dropdown-panel notification-dropdown" id="notificationPanel" hidden>
+                    <div class="dropdown-header">
+                        <h3>Notifications</h3>
+                        <button type="button" class="clear-notif-btn" id="clearNotifBtn">Mark all read</button>
+                    </div>
+                    <div class="notification-list" id="notificationList">
+                        <div class="notif-item unread">
+                            <p><strong>System:</strong> Ready for logout session.</p>
+                            <small>Just now</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Profile & Logout Dropdown Menu -->
+            <div class="header-menu">
+                <button class="profile-button" id="profileBtn" type="button">
+                    <span class="admin-avatar">
+                        <i data-lucide="user-round"></i>
+                    </span>
+                    <span class="admin-label">
+                        <strong>Admin</strong>
+                        <small>Administrator</small>
+                    </span>
+                </button>
+
+                <div class="dropdown-panel profile-panel" id="profilePanel" hidden>
+                    <h3>Administrator</h3>
+                    <p>CTU – Ginatilan</p>
+                    <button type="button" id="profileLogout">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- =========================================
+         LOGOUT MODAL CONTAINER AREA
+    ========================================= -->
+    <div class="logout-wrapper">
+        <div class="logout-modal-card">
+            <div class="modal-icon-wrap">
+                <i data-lucide="log-out"></i>
+            </div>
+            <h2>Log Out?</h2>
+            <p class="modal-main-text">Are you sure you want to log out of the School Enrollment System</p>
+            <p class="modal-sub-text">Your current session will end. You can sign in again at any time.</p>
+            
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" id="cancelBtn">Cancel</button>
+                <button type="button" class="btn-logout" id="confirmLogoutBtn">Yes, Log Out</button>
+            </div>
+        </div>
+        
+        <div class="page-footer-note">
+            CTU – Ginatilan Extension Campus
+        </div>
+    </div>
+
+    <!-- Script file connection -->
+    <script src="Logout.js"></script>
+</body>
+
+</html>

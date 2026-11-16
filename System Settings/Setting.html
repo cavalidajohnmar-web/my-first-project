@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QBSEMS | System Settings</title>
+    
+    <!-- Stylesheet connection -->
+    <link rel="stylesheet" href="Setting.css">
+
+    <!-- Lucide icons library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <!-- =========================================
+         TOP HEADER SECTION
+    ========================================= -->
+    <header class="top-header">
+        <div class="brand">
+            <div class="logo-container">
+                <img src="ctulogo(7).jpg" alt="CTU Ginatilan Logo">
+            </div>
+            <div class="brand-text">
+                <h2>CTU – Ginatilan</h2>
+                <p>Extension Campus · School Enrollment System</p>
+            </div>
+        </div>
+
+        <div class="top-actions">
+            <!-- Live date and time display -->
+            <span class="date-time" id="dateTime"></span>
+
+            <!-- Notifications Dropdown Menu -->
+            <div class="header-menu">
+                <button class="icon-button" id="notificationBtn" type="button" aria-label="Notifications">
+                    <i data-lucide="bell"></i>
+                    <span class="notification-dot" id="notificationDot"></span>
+                </button>
+
+                <div class="dropdown-panel notification-dropdown" id="notificationPanel" hidden>
+                    <div class="dropdown-header">
+                        <h3>Notifications</h3>
+                        <button type="button" class="clear-notif-btn" id="clearNotifBtn">Mark all read</button>
+                    </div>
+                    <div class="notification-list" id="notificationList">
+                        <div class="notif-item unread">
+                            <p><strong>System:</strong> Settings panel fully updated with active configurations.</p>
+                            <small>Just now</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Profile & Logout Dropdown Menu -->
+            <div class="header-menu">
+                <button class="profile-button" id="profileBtn" type="button">
+                    <span class="admin-avatar">
+                        <i data-lucide="user-round"></i>
+                    </span>
+                    <span class="admin-label">
+                        <strong>Admin</strong>
+                        <small>Administrator</small>
+                    </span>
+                </button>
+
+                <div class="dropdown-panel profile-panel" id="profilePanel" hidden>
+                    <h3>Administrator</h3>
+                    <p>CTU – Ginatilan</p>
+                    <button type="button" id="profileLogout">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- =========================================
+         MAIN APPLICATION LAYOUT CONTAINER
+    ========================================= -->
+    <div class="main-layout">
+
+        <!-- SIDEBAR NAVIGATION -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="Main Dashboard.html" class="nav-link">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Main Dashboard</span>
+                </a>
+                <a href="Issue Ticket.html" class="nav-link">
+                    <i data-lucide="ticket"></i>
+                    <span>Issue Ticket</span>
+                </a>
+                <a href="Console Nurse.html" class="nav-link">
+                    <i data-lucide="users-round"></i>
+                    <span>Queue Management</span>
+                </a>
+                <a href="Medical Requirements.html" class="nav-link">
+                    <i data-lucide="clipboard-list"></i>
+                    <span>Medical Requirements</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <i data-lucide="chart-no-axes-column"></i>
+                    <span>Reports</span>
+                </a>
+                <a href="Setting.html" class="nav-link active">
+                    <i data-lucide="settings"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="nav-link" id="sidebarLogout">
+                    <i data-lucide="log-out"></i>
+                    <span>Logout</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <small>SCHOOL ENROLLMENT SYSTEM</small>
+                <p>Mon – Fri · 8:00 AM – 5:00 PM</p>
+            </div>
+        </aside>
+
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
+
+            <!-- Page Title Header -->
+            <div class="page-heading">
+                <h1>System Settings</h1>
+                <p>Configure enrollment services and system preferences.</p>
+            </div>
+
+            <!-- 4 Clickable Settings Category Cards / Tabs -->
+            <div class="settings-tabs-grid">
+                <div class="tab-card active" data-tab="office-config">
+                    <div class="tab-icon"><i data-lucide="settings"></i></div>
+                    <h3>Office Configuration</h3>
+                    <p>Enable / disable offices</p>
+                </div>
+
+                <div class="tab-card" data-tab="queue-prefix">
+                    <div class="tab-icon"><i data-lucide="list-ordered"></i></div>
+                    <h3>Queue Prefix / Numbering</h3>
+                    <p>Set queue prefixes</p>
+                </div>
+
+                <div class="tab-card" data-tab="tv-display">
+                    <div class="tab-icon"><i data-lucide="monitor"></i></div>
+                    <h3>TV Display Customization</h3>
+                    <p>Screen appearance & speaker volume</p>
+                </div>
+
+                <div class="tab-card" data-tab="user-role">
+                    <div class="tab-icon"><i data-lucide="users"></i></div>
+                    <h3>User & Role Management</h3>
+                    <p>Account permissions</p>
+                </div>
+            </div>
+
+
+            <!-- SETTINGS CONTENT PANELS -->
+            <div class="settings-panel-card">
+
+                <!-- =========================================
+                     TAB 1: OFFICE CONFIGURATION
+                ========================================= -->
+                <div class="settings-section" id="office-config-section">
+                    <div class="section-header-row">
+                        <div>
+                            <h2>Office Configuration</h2>
+                            <p>Manage active offices and their queue settings.</p>
+                        </div>
+                        <button type="button" class="add-office-btn" id="addOfficeBtn">
+                            <i data-lucide="plus"></i> Add Office
+                        </button>
+                    </div>
+
+                    <div class="table-headers-row">
+                        <span>ENROLLMENT OFFICE</span>
+                        <span>QUEUE PREFIX</span>
+                        <span>SERVICE COUNTER</span>
+                        <span>OFFICE STATUS</span>
+                    </div>
+
+                    <div class="offices-list" id="officesList">
+                        <!-- Registrar Office Row -->
+                        <div class="office-row-card">
+                            <div class="office-col-name">
+                                <i data-lucide="file-text" style="color: #0869d9;"></i>
+                                <span>Registrar</span>
+                            </div>
+                            <div class="office-col-prefix">
+                                <input type="text" class="prefix-input" value="R" data-office="Registrar">
+                            </div>
+                            <div class="office-col-counter">Counter 1</div>
+                            <div class="office-col-status">
+                                <label class="switch">
+                                    <input type="checkbox" checked class="office-toggle" data-office="Registrar">
+                                    <span class="slider"></span>
+                                    <span class="status-label">Enabled</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Nurse Office Row -->
+                        <div class="office-row-card">
+                            <div class="office-col-name">
+                                <i data-lucide="heart-pulse" style="color: #00b85a;"></i>
+                                <span>Nurse</span>
+                            </div>
+                            <div class="office-col-prefix">
+                                <input type="text" class="prefix-input" value="N" data-office="Nurse">
+                            </div>
+                            <div class="office-col-counter">Counter 2</div>
+                            <div class="office-col-status">
+                                <label class="switch">
+                                    <input type="checkbox" checked class="office-toggle" data-office="Nurse">
+                                    <span class="slider"></span>
+                                    <span class="status-label">Enabled</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- MIS Office Row -->
+                        <div class="office-row-card">
+                            <div class="office-col-name">
+                                <i data-lucide="monitor" style="color: #8b5cf6;"></i>
+                                <span>MIS</span>
+                            </div>
+                            <div class="office-col-prefix">
+                                <input type="text" class="prefix-input" value="M" data-office="MIS">
+                            </div>
+                            <div class="office-col-counter">Counter 3</div>
+                            <div class="office-col-status">
+                                <label class="switch">
+                                    <input type="checkbox" checked class="office-toggle" data-office="MIS">
+                                    <span class="slider"></span>
+                                    <span class="status-label">Enabled</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="footer-note">Disabling an office pauses new tickets. Existing queues remain available to staff.</p>
+                </div>
+
+
+                <!-- =========================================
+                     TAB 2: QUEUE PREFIX / NUMBERING
+                     Purpose: Set starting numbers and digit formats for tickets.
+                ========================================= -->
+                <div class="settings-section" id="queue-prefix-section" style="display: none;">
+                    <h2>Queue Prefix & Numbering Rules</h2>
+                    <p>Configure starting numbers and ticket padding formats for each department.</p>
+                    
+                    <div class="form-grid-settings" style="margin-top: 20px;">
+                        <div class="setting-group">
+                            <label>Starting Ticket Number</label>
+                            <input type="number" id="startNumberInput" class="config-input" value="1">
+                        </div>
+                        <div class="setting-group">
+                            <label>Digit Padding Format</label>
+                            <select id="digitPaddingSelect" class="config-input">
+                                <option value="3">3 Digits (e.g. 001)</option>
+                                <option value="4">4 Digits (e.g. 0001)</option>
+                            </select>
+                        </div>
+                        <div class="setting-group">
+                            <label>Reset Queue Daily</label>
+                            <div style="margin-top: 8px;">
+                                <label class="switch">
+                                    <input type="checkbox" checked id="resetDailyToggle">
+                                    <span class="slider"></span>
+                                    <span class="status-label">Auto Reset at 12:00 AM</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- =========================================
+                     TAB 3: TV DISPLAY CUSTOMIZATION (Includes Volume)
+                     Purpose: Adjust Waiting Room appearance and Text-to-Speech speaker volume.
+                ========================================= -->
+                <div class="settings-section" id="tv-display-section" style="display: none;">
+                    <h2>TV Display & Speaker Customization</h2>
+                    <p>Manage waiting room display announcements, ticker messages, and audio volume.</p>
+                    
+                    <div class="form-grid-settings" style="margin-top: 20px;">
+                        <!-- Speaker Voice Volume Control -->
+                        <div class="setting-group">
+                            <label for="ttsVolume">Speaker Voice Volume (<span id="volVal">100</span>%)</label>
+                            <div style="display: flex; align-items: center; gap: 12px; margin-top: 8px;">
+                                <i data-lucide="volume-2" style="color: #0869d9;"></i>
+                                <input type="range" id="ttsVolume" min="0" max="100" value="100" style="flex: 1; cursor: pointer;">
+                            </div>
+                            <small style="color: #6985a7; display: block; margin-top: 4px;">Controls audio voice announcements in the Waiting Room.</small>
+                        </div>
+
+                        <!-- Speech Rate -->
+                        <div class="setting-group">
+                            <label for="ttsSpeed">Speech Speed</label>
+                            <select id="ttsSpeed" class="config-input" style="margin-top: 8px;">
+                                <option value="0.8">Slow (0.8x)</option>
+                                <option value="0.9" selected>Normal (0.9x)</option>
+                                <option value="1.0">Fast (1.0x)</option>
+                            </select>
+                        </div>
+
+                        <!-- Ticker Message -->
+                        <div class="setting-group" style="grid-column: span 2;">
+                            <label for="tickerText">Waiting Room Ticker Banner Text</label>
+                            <input type="text" id="tickerText" class="config-input" value="Please wait for your number to be called. Thank you!" style="margin-top: 8px;">
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- =========================================
+                     TAB 4: USER & ROLE MANAGEMENT
+                     Purpose: Manage admin/staff accounts and permissions.
+                ========================================= -->
+                <div class="settings-section" id="user-role-section" style="display: none;">
+                    <div class="section-header-row">
+                        <div>
+                            <h2>User & Role Management</h2>
+                            <p>Manage system staff accounts, window assignments, and access permissions.</p>
+                        </div>
+                        <button type="button" class="add-office-btn" id="addUserBtn">
+                            <i data-lucide="user-plus"></i> Add User
+                        </button>
+                    </div>
+
+                    <div class="table-headers-row" style="grid-template-columns: 2fr 1.5fr 1fr 1fr;">
+                        <span>STAFF NAME</span>
+                        <span>ROLE / OFFICE</span>
+                        <span>STATUS</span>
+                        <span>ACTIONS</span>
+                    </div>
+
+                    <div class="offices-list" id="usersList">
+                        <div class="office-row-card" style="grid-template-columns: 2fr 1.5fr 1fr 1fr;">
+                            <div class="office-col-name">
+                                <i data-lucide="user-check" style="color: #0869d9;"></i>
+                                <span>Administrator</span>
+                            </div>
+                            <div>System Admin</div>
+                            <div><span style="color: #008f43; font-weight: 500;">Active</span></div>
+                            <div><button type="button" class="btn-cancel" style="padding: 4px 10px; font-size: 11px;">Edit</button></div>
+                        </div>
+                        <div class="office-row-card" style="grid-template-columns: 2fr 1.5fr 1fr 1fr;">
+                            <div class="office-col-name">
+                                <i data-lucide="user" style="color: #00b85a;"></i>
+                                <span>Nurse Station</span>
+                            </div>
+                            <div>Nurse Office</div>
+                            <div><span style="color: #008f43; font-weight: 500;">Active</span></div>
+                            <div><button type="button" class="btn-cancel" style="padding: 4px 10px; font-size: 11px;">Edit</button></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- BOTTOM ACTION BUTTONS BAR -->
+            <div class="action-buttons-bar">
+                <button type="button" class="btn-cancel" id="cancelBtn">
+                    <i data-lucide="rotate-ccw"></i> Cancel
+                </button>
+                <button type="button" class="btn-save" id="saveChangesBtn">
+                    <i data-lucide="save"></i> Save Changes
+                </button>
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- Script file connection -->
+    <script src="Setting.js"></script>
+</body>
+
+</html>

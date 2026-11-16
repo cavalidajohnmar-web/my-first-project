@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QBSEMS | Queue Management</title>
+
+    <link rel="stylesheet" href="Nurse Office.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="topbar">
+
+    <div class="brand">
+        <div class="logo">
+            <img src="ctulogo(3).jpg" alt="CTU Logo">
+        </div>
+
+        <div>
+            <h2>CTU – Ginatilan</h2>
+            <p>Extension Campus · School Enrollment System</p>
+        </div>
+    </div>
+
+    <div class="top-right">
+
+        <!-- LIVE DATE AND TIME -->
+        <span class="date-time" id="dateTime"></span>
+
+        <!-- NOTIFICATION MENU -->
+        <div class="header-menu">
+            <button class="header-icon" id="notificationBtn" type="button" aria-label="Notifications">
+                <i data-lucide="bell"></i>
+                <span class="notification-dot" id="notificationDot"></span>
+            </button>
+
+            <div class="dropdown-panel notification-dropdown" id="notificationPanel" hidden>
+                <div class="dropdown-header">
+                    <h3>Notifications</h3>
+                    <button type="button" class="clear-notif-btn" id="clearNotifBtn">Mark all read</button>
+                </div>
+
+                <div class="notification-list" id="notificationList">
+                    <div class="notif-item unread">
+                        <p><strong>Nurse Office:</strong> Queue system is live and accepting students.</p>
+                        <small>Just now</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROFILE MENU -->
+        <div class="header-menu">
+            <button class="profile-button" id="profileBtn" type="button">
+                <div class="profile-icon">
+                    <i data-lucide="user-round"></i>
+                </div>
+
+                <div class="profile">
+                    <strong>Admin</strong>
+                    <small>Administrator</small>
+                </div>
+            </button>
+
+            <div class="dropdown-panel profile-panel" id="profilePanel" hidden>
+                <h3>Administrator</h3>
+                <p>CTU – Ginatilan</p>
+                <button type="button" id="profileLogout">Logout</button>
+            </div>
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- MAIN LAYOUT WRAPPER -->
+<div class="main-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <nav class="sidebar-nav">
+
+            <a href="Main Dashboard.html" class="nav-link">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Main Dashboard</span>
+            </a>
+
+            <a href="Issue Ticket.html" class="nav-link">
+                <i data-lucide="ticket"></i>
+                <span>Issue Ticket</span>
+            </a>
+
+            <a href="Nurse Office.html" class="nav-link active">
+                <i data-lucide="users-round"></i>
+                <span>Queue Management</span>
+            </a>
+
+            <a href="#" class="nav-link">
+                <i data-lucide="clipboard-list"></i>
+                <span>Medical Requirements</span>
+            </a>
+
+            <a href="#" class="nav-link">
+                <i data-lucide="chart-no-axes-column"></i>
+                <span>Reports</span>
+            </a>
+
+            <a href="#" class="nav-link">
+                <i data-lucide="settings"></i>
+                <span>Settings</span>
+            </a>
+
+            <a href="#" class="nav-link" id="sidebarLogout">
+                <i data-lucide="log-out"></i>
+                <span>Logout</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <small>SCHOOL ENROLLMENT SYSTEM</small>
+            <p>Mon – Fri · 8:00 AM – 5:00 PM</p>
+        </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- PAGE TITLE -->
+        <div class="page-heading">
+
+            <div>
+                <h1>Queue Management – Nurse Office</h1>
+                <p>Call the next student and manage the active enrollment queue.</p>
+            </div>
+
+            <div class="office-select-wrapper">
+                <i data-lucide="chevron-down"></i>
+
+                <select id="officeSelect" class="office-select">
+                    <option value="Nurse Office">Nurse Office</option>
+                    <option value="Registrar Office">Registrar Office</option>
+                    <option value="MIS Office">MIS Office</option>
+                </select>
+            </div>
+
+        </div>
+
+        <!-- STATISTICS -->
+        <section class="stats">
+
+            <div class="stat-card serving-card">
+
+                <div class="stat-icon">
+                    <i data-lucide="bell-ring"></i>
+                </div>
+
+                <div>
+                    <p>Now Serving</p>
+                    <h2 id="nowServing">N-001</h2>
+                </div>
+
+            </div>
+
+            <div class="stat-card waiting-card">
+
+                <div class="stat-icon">
+                    <i data-lucide="users-round"></i>
+                </div>
+
+                <div>
+                    <p>Waiting</p>
+                    <h2 id="waitingCount">4</h2>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- QUEUE LAYOUT -->
+        <section class="queue-layout">
+
+            <!-- ACTIVE QUEUE -->
+            <div class="active-queue-card">
+
+                <div class="card-heading">
+                    <h3>Active Queue</h3>
+                    <span class="live-badge">Live</span>
+                </div>
+
+                <!-- TABLE HEADER -->
+                <div class="table-header">
+                    <span>#</span>
+                    <span>TICKET NO.</span>
+                    <span>STUDENT TYPE</span>
+                    <span>TIME ISSUED</span>
+                    <span>STATUS</span>
+                </div>
+
+                <!-- QUEUE ROWS -->
+                <div id="queueTable"></div>
+
+                <!-- BUTTONS -->
+                <div class="queue-actions">
+
+                    <button class="btn call-btn" id="callNext">
+                        <i data-lucide="volume-2"></i>
+                        Call Next
+                    </button>
+
+                    <button class="btn complete-btn" id="completeStudent">
+                        <i data-lucide="check"></i>
+                        Complete
+                    </button>
+
+                    <button class="btn skip-btn" id="skipStudent">
+                        Skip
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="right-section">
+
+                <!-- CURRENT STUDENT -->
+                <div class="current-student-card">
+
+                    <h3>Current Student</h3>
+
+                    <h1 id="currentTicket">N-001</h1>
+
+                    <p id="currentName">John Mar Cavalida</p>
+
+                    <small id="currentType">
+                        Freshman / New Student
+                    </small>
+
+                    <hr>
+
+                    <div class="service-time">
+                        <span>Service started</span>
+                        <strong id="serviceTime">09:35 AM</strong>
+                    </div>
+
+                    <button class="recall-btn" id="recallStudent">
+                        <i data-lucide="volume-2"></i>
+                        Recall Student
+                    </button>
+
+                </div>
+
+                <!-- INFORMATION CARD -->
+                <div class="info-card">
+
+                    <i data-lucide="info"></i>
+
+                    <p>Ready for the next student?</p>
+
+                    <small>
+                        Complete the current screening, then call the next
+                        ticket. Skipped students can be recalled by staff.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="Nurse Office.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1070 @@
+/* ======================================
+   1. GENERAL SETTINGS
+====================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f0f6fd;
+    color: #102f55;
+    min-height: 100vh;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+
+/* ======================================
+   2. TOP HEADER
+====================================== */
+
+.top-header {
+    height: 71px;
+    width: 100%;
+    background: #082d55;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+    color: white;
+    position: relative;
+    z-index: 10;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-container {
+    width: 51px;
+    height: 51px;
+    background: #f8e900;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.brand-text h2 {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.brand-text p {
+    font-size: 12px;
+    color: #d1dfef;
+}
+
+
+/* HEADER ACTIONS */
+
+.top-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.date-time {
+    font-size: 12px;
+    color: #e1eaf5;
+    white-space: nowrap;
+}
+
+.header-menu {
+    position: relative;
+}
+
+.icon-button {
+    width: 32px;
+    height: 35px;
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    position: relative;
+    transition: background 0.2s;
+}
+
+.icon-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.icon-button svg {
+    width: 17px;
+    height: 17px;
+    stroke-width: 1.5;
+}
+
+.notification-dot {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 7px;
+    height: 7px;
+    background: #00bd61;
+    border-radius: 50%;
+    border: 1px solid #082d55;
+}
+
+.notification-dot.hidden {
+    display: none;
+}
+
+.profile-button {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    background: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.admin-avatar {
+    width: 32px;
+    height: 32px;
+    background: #24577f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-avatar svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 1.4;
+}
+
+.admin-label {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 3px;
+}
+
+.admin-label strong {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.admin-label small {
+    font-size: 10px;
+    color: #c7d8e9;
+}
+
+
+/* DROPDOWN MENUS */
+
+.dropdown-panel {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    width: 240px;
+    background: white;
+    color: #102f55;
+    padding: 16px;
+    border: 1px solid #d9e6f2;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    z-index: 30;
+}
+
+.notification-dropdown {
+    width: 290px;
+    padding: 14px;
+}
+
+.dropdown-panel[hidden] {
+    display: none;
+}
+
+.dropdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e5edf5;
+}
+
+.dropdown-header h3 {
+    font-size: 14px;
+    margin: 0;
+}
+
+.clear-notif-btn {
+    background: transparent !important;
+    width: auto !important;
+    padding: 0 !important;
+    font-size: 11px;
+    color: #0869d9 !important;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.clear-notif-btn:hover {
+    text-decoration: underline;
+}
+
+.notification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 230px;
+    overflow-y: auto;
+}
+
+.notif-item {
+    padding: 9px 10px;
+    border-radius: 6px;
+    background: #f8fbff;
+    border: 1px solid #edf3f8;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.notif-item:hover {
+    background: #eef5fd;
+}
+
+.notif-item.unread {
+    background: #e8f2ff;
+    border-color: #cfe3fc;
+}
+
+.notif-item p {
+    color: #102f55;
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
+
+.notif-item small {
+    color: #718baa;
+    font-size: 10px;
+}
+
+.profile-panel h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.profile-panel p {
+    color: #6480a3;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.profile-panel button {
+    width: 100%;
+    padding: 9px;
+    background: #e8f2ff;
+    border: none;
+    border-radius: 5px;
+    color: #102f55;
+    cursor: pointer;
+}
+
+
+/* ======================================
+   3. MAIN LAYOUT
+====================================== */
+
+.main-layout {
+    display: flex;
+    min-height: calc(100vh - 71px);
+}
+
+
+/* ======================================
+   4. SIDEBAR
+====================================== */
+
+.sidebar {
+    width: 198px;
+    min-width: 198px;
+    background: #062649;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: calc(100vh - 71px);
+}
+
+.sidebar-nav {
+    padding: 20px 11px;
+}
+
+.nav-link {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 0 14px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #e5edf6;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.nav-link:hover {
+    background: #12436f;
+}
+
+.nav-link.active {
+    background: #0869d9;
+    color: white;
+}
+
+.nav-link svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 1.5;
+    flex-shrink: 0;
+}
+
+.sidebar-footer {
+    padding: 18px;
+    margin-bottom: 5px;
+}
+
+.sidebar-footer small {
+    font-size: 9px;
+    color: #91aac5;
+}
+
+.sidebar-footer p {
+    font-size: 11px;
+    margin-top: 6px;
+    color: white;
+    white-space: nowrap;
+}
+
+
+/* ======================================
+   5. MAIN CONTENT
+====================================== */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 27px 31px;
+}
+
+.page-heading {
+    margin-bottom: 20px;
+}
+
+.page-heading h1 {
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 7px;
+    color: #102f55;
+}
+
+.page-heading p {
+    color: #6985a7;
+    font-size: 13px;
+}
+
+
+/* ======================================
+   6. CONTENT GRID
+====================================== */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.88fr);
+    gap: 20px;
+    align-items: start;
+}
+
+
+/* ======================================
+   7. FORM CARD
+====================================== */
+
+.form-card {
+    background: white;
+    border: 1px solid #d9e6f2;
+    border-radius: 9px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(27, 65, 105, 0.05);
+}
+
+.form-card form {
+    width: 100%;
+}
+
+
+/* ======================================
+   8. STUDENT TYPE TABS
+====================================== */
+
+.student-tabs {
+    display: flex;
+    padding: 4px;
+    background: #e7f2ff;
+    border-radius: 7px;
+    gap: 5px;
+    margin-bottom: 21px;
+}
+
+.tab {
+    flex: 1;
+    height: 37px;
+    border: 1px solid #d5e4f5;
+    background: transparent;
+    color: #102f55;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: 0.2s;
+}
+
+.tab.active {
+    background: #0869d9;
+    color: white;
+    border-color: #0869d9;
+}
+
+.tab:hover:not(.active) {
+    background: #dcecff;
+}
+
+
+/* ======================================
+   9. FORM GROUPS
+====================================== */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 9px;
+    color: #102f55;
+}
+
+.input-wrapper,
+.select-wrapper {
+    position: relative;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    height: 41px;
+    border: 1px solid #cbdced;
+    border-radius: 5px;
+    padding: 0 12px;
+    color: #52749a;
+    background: white;
+    outline: none;
+    font-size: 13px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #0869d9;
+    box-shadow: 0 0 0 2px rgba(8, 105, 217, 0.08);
+}
+
+.form-group input::placeholder {
+    color: #718baa;
+}
+
+.input-icon {
+    position: absolute;
+    right: 14px;
+    top: 10px;
+    color: #8098b5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.input-icon svg {
+    width: 15px;
+    height: 15px;
+    stroke-width: 1.4;
+}
+
+.select-wrapper select {
+    appearance: none;
+    cursor: pointer;
+    padding-right: 35px;
+}
+
+.select-icon {
+    position: absolute;
+    right: 13px;
+    top: 12px;
+    width: 15px;
+    height: 15px;
+    color: #718baa;
+    stroke-width: 1.5;
+    pointer-events: none;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 9px;
+    font-size: 11px;
+    color: #6985a7;
+}
+
+
+/* ======================================
+   10. DIVIDER
+====================================== */
+
+.section-divider {
+    height: 1px;
+    background: #e5edf5;
+    margin: 19px 0 21px;
+}
+
+
+/* ======================================
+   11. MEDICAL REQUIREMENTS
+====================================== */
+
+.requirements h2 {
+    font-size: 17px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.requirement-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 13px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #102f55;
+}
+
+.requirement-item input {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    min-width: 15px;
+    border: 1px solid #00bd61;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    margin: 0;
+}
+
+.requirement-item input:checked {
+    background: #00bd61;
+}
+
+.requirement-item input:checked::after {
+    content: "✓";
+    color: white;
+    position: absolute;
+    font-size: 10px;
+    left: 2px;
+    top: -1px;
+}
+
+.requirement-item input:focus-visible {
+    outline: 3px solid #cce6ff;
+}
+
+
+/* ======================================
+   12. FORM BUTTONS
+====================================== */
+
+.form-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.cancel-button {
+    width: 27%;
+    height: 46px;
+    background: #e6f1ff;
+    border: 1px solid #d3e4f8;
+    color: #102f55;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.issue-button {
+    flex: 1;
+    height: 46px;
+    background: #0869d9;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+}
+
+.issue-button svg {
+    width: 15px;
+    height: 15px;
+    stroke-width: 1.5;
+}
+
+.issue-button span {
+    margin-right: 7px;
+}
+
+.cancel-button:hover {
+    background: #d6e8fc;
+}
+
+.issue-button:hover {
+    background: #075bbd;
+}
+
+
+/* ======================================
+   13. RIGHT COLUMN
+====================================== */
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+
+/* ======================================
+   14. OFFICE CARD
+====================================== */
+
+.office-card {
+    background: white;
+    border: 1px solid #d9e6f2;
+    border-radius: 9px;
+    padding: 23px;
+    box-shadow: 0 5px 15px rgba(27, 65, 105, 0.04);
+}
+
+.office-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.office-icon {
+    width: 43px;
+    height: 43px;
+    background: #e5f8ec;
+    color: #00bd61;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.office-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.5;
+}
+
+.office-heading h2 {
+    font-size: 19px;
+    margin-bottom: 5px;
+}
+
+.office-heading p {
+    color: #6985a7;
+    font-size: 12px;
+}
+
+.office-divider {
+    height: 1px;
+    background: #e5edf5;
+    margin: 18px 0;
+}
+
+
+/* OFFICE ROWS */
+
+.office-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 19px;
+    font-size: 13px;
+}
+
+.office-row > span:first-child {
+    color: #6985a7;
+}
+
+.office-row strong {
+    font-weight: 500;
+    color: #102f55;
+}
+
+.status-badge {
+    background: #e3f8eb;
+    color: #008f43;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+}
+
+.office-row .serving-number {
+    color: #00b85a;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.office-note {
+    color: #6985a7;
+    font-size: 11px;
+    line-height: 1.5;
+    margin-top: 3px;
+}
+
+
+/* ======================================
+   15. INFORMATION CARD
+====================================== */
+
+.information-card {
+    background: #e5f2ff;
+    padding: 21px;
+    border-radius: 9px;
+}
+
+.info-icon {
+    color: #0875e8;
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.info-icon svg {
+    width: 17px;
+    height: 17px;
+    stroke-width: 1.5;
+}
+
+.information-card h3 {
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.information-card p {
+    color: #6985a7;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 13px;
+}
+
+.information-card strong {
+    font-size: 12px;
+}
+
+
+/* ======================================
+   16. TICKET MODAL
+====================================== */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(4, 25, 49, 0.55);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 100;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal-card {
+    width: 100%;
+    max-width: 430px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+}
+
+.close-modal {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    background: none;
+    border: none;
+    color: #718baa;
+    font-size: 27px;
+    cursor: pointer;
+}
+
+.success-icon {
+    width: 48px;
+    height: 48px;
+    background: #e3f8eb;
+    color: #00b85a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    margin: 0 auto 15px;
+}
+
+.modal-card h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.modal-subtitle {
+    color: #6985a7;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.generated-ticket {
+    background: #eaf4ff;
+    padding: 18px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.generated-ticket small {
+    color: #6985a7;
+    font-size: 11px;
+}
+
+.generated-ticket h1 {
+    font-size: 35px;
+    color: #0869d9;
+    margin-top: 8px;
+}
+
+.ticket-details {
+    text-align: left;
+}
+
+.ticket-details div {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #edf1f5;
+    font-size: 12px;
+}
+
+.ticket-details span {
+    color: #6985a7;
+}
+
+.ticket-details strong {
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.selected-requirements {
+    text-align: left;
+    margin-top: 15px;
+    padding: 12px;
+    border: 1px solid #e0eaf4;
+    border-radius: 7px;
+    font-size: 12px;
+}
+
+.selected-requirements ul {
+    padding-left: 20px;
+    margin-top: 8px;
+    color: #6985a7;
+}
+
+.selected-requirements li {
+    margin-bottom: 5px;
+}
+
+.modal-footer-text {
+    font-size: 12px;
+    color: #6985a7;
+    margin: 18px 0;
+}
+
+.done-button {
+    width: 100%;
+    height: 43px;
+    border: none;
+    background: #0869d9;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.done-button:hover {
+    background: #075bbd;
+}
+
+
+/* ======================================
+   17. BUTTON INTERACTIONS
+====================================== */
+
+button {
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+
+/* ======================================
+   18. RESPONSIVE DESIGN
+====================================== */
+
+@media (max-width: 1000px) {
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .right-column {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .top-header {
+        padding: 0 12px;
+    }
+
+    .brand-text h2 {
+        font-size: 14px;
+    }
+
+    .brand-text p {
+        font-size: 10px;
+    }
+
+    .date-time {
+        display: none;
+    }
+
+    .main-layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-width: 100%;
+        min-height: auto;
+    }
+
+    .sidebar-nav {
+        display: flex;
+        overflow-x: auto;
+        padding: 10px;
+    }
+
+    .nav-link {
+        min-width: max-content;
+        margin: 0 4px;
+    }
+
+    .sidebar-footer {
+        display: none;
+    }
+
+    .main-content {
+        padding: 20px 13px;
+    }
+
+    .form-card {
+        padding: 18px;
+    }
+
+    .right-column {
+        display: flex;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+    .cancel-button {
+        width: 100%;
+    }
+
+}
+
+/* ======================================
+   LUCIDE ICON FINAL ADJUSTMENTS
+====================================== */
+
+.nav-link svg {
+    color: inherit;
+}
+
+.issue-button svg {
+    color: white;
+}
+
+.office-icon svg {
+    color: #00bd61;
+}
+
+.info-icon svg {
+    color: #0875e8;
+}

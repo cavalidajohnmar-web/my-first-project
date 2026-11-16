@@ -1,0 +1,691 @@
+/* =========================================
+   1. GENERAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f1f7fd;
+    color: #15365e;
+}
+
+/* =========================================
+   2. HEADER
+========================================= */
+
+.topbar {
+    height: 70px;
+    background: #082d53;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 26px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 51px;
+    height: 51px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #ffdf00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.brand h2 {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.brand p {
+    font-size: 12px;
+    color: #c5d6e8;
+    margin-top: 5px;
+}
+
+.top-right {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    font-size: 12px;
+}
+
+.header-icon {
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.header-icon svg {
+    width: 17px;
+}
+
+.profile-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #164c78;
+    display: grid;
+    place-items: center;
+}
+
+.profile-icon svg {
+    width: 18px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.profile strong {
+    font-weight: 500;
+}
+
+.profile small {
+    color: #c5d6e8;
+}
+
+/* =========================================
+   3. SIDEBAR
+========================================= */
+
+.sidebar {
+    position: fixed;
+    top: 70px;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    background: #062749;
+    padding: 23px 13px;
+    color: white;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.nav-link {
+    height: 44px;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    color: white;
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 13px;
+}
+
+.nav-link svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 1.5;
+    flex-shrink: 0;
+}
+
+.nav-link.active {
+    background: #0870df;
+}
+
+.nav-link:hover {
+    background: #164a78;
+}
+
+.sidebar-footer {
+    position: absolute;
+    bottom: 23px;
+    left: 20px;
+}
+
+.sidebar-footer small {
+    color: #8daac5;
+    font-size: 9px;
+}
+
+.sidebar-footer p {
+    margin-top: 7px;
+    font-size: 11px;
+}
+
+/* =========================================
+   4. MAIN CONTENT
+========================================= */
+
+.main-content {
+    margin-left: 200px;
+    padding: 96px 31px 30px;
+}
+
+.page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 21px;
+}
+
+.page-heading h1 {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.page-heading p {
+    color: #6985a5;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.office-open {
+    text-decoration: none;
+    color: #008b40;
+    background: #e3f7e9;
+    padding: 6px 11px;
+    border-radius: 4px;
+    font-size: 11px;
+}
+
+.office-open:hover {
+    background: #c9efd5;
+}
+
+/* =========================================
+   5. STATISTICS
+========================================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 17px;
+}
+
+.stat-card {
+    height: 96px;
+    padding: 19px 17px;
+    border-radius: 10px;
+}
+
+.serving-card {
+    background: #e3f7e9;
+    color: #00883c;
+}
+
+.waiting-card {
+    background: #e5f1fd;
+    color: #15365e;
+}
+
+.stat-card p {
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.serving-card p {
+    color: #00883c;
+}
+
+.waiting-card p {
+    color: #6985a5;
+}
+
+.stat-card h2 {
+    font-size: 29px;
+    font-weight: 400;
+}
+
+/* =========================================
+   6. MAIN LAYOUT
+========================================= */
+
+.console-layout {
+    display: grid;
+    grid-template-columns: 1.25fr 0.95fr;
+    gap: 19px;
+    align-items: start;
+}
+
+.left-section {
+    min-width: 0;
+}
+
+.student-queue-card,
+.details-card {
+    background: white;
+    border: 1px solid #dce8f5;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(28, 65, 105, 0.06);
+}
+
+/* =========================================
+   7. STUDENT TABS
+========================================= */
+
+.student-queue-card {
+    padding: 16px;
+}
+
+.tabs {
+    display: flex;
+    gap: 9px;
+    margin-bottom: 14px;
+}
+
+.tab {
+    height: 37px;
+    min-width: 135px;
+    padding: 0 15px;
+    border: 1px solid #d7e7f8;
+    border-radius: 6px;
+    background: #e5f1ff;
+    color: #15365e;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.tab.active {
+    background: #0669dc;
+    color: white;
+    border-color: #0669dc;
+}
+
+/* =========================================
+   8. STUDENT TABLE
+========================================= */
+
+.student-table-header,
+.student-row {
+    display: grid;
+    grid-template-columns: 2.1fr 0.7fr 0.55fr;
+    align-items: center;
+    gap: 8px;
+}
+
+.student-table-header {
+    height: 33px;
+    background: #f7fafd;
+    padding: 0 11px;
+    color: #7189a6;
+    font-size: 10px;
+}
+
+.student-row {
+    min-height: 53px;
+    padding: 8px 11px;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.student-row:hover {
+    background: #f0f6fd;
+}
+
+.student-row.selected {
+    background: #e5f1ff;
+}
+
+.student-name {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.student-name small {
+    color: #7790aa;
+    font-size: 9px;
+}
+
+.student-status {
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 11px;
+}
+
+.serving-status {
+    background: #e3f7e9;
+    color: #00883c;
+}
+
+.waiting-status {
+    background: #fff3c9;
+    color: #a97800;
+}
+
+.skipped-status {
+    background: #fce8e8;
+    color: #bd4141;
+}
+
+.completed-status {
+    background: #e9edf2;
+    color: #607080;
+}
+
+/* =========================================
+   9. CONSOLE ACTIONS
+========================================= */
+
+.console-actions {
+    display: grid;
+    grid-template-columns: 1.5fr 0.55fr 0.7fr;
+    gap: 11px;
+    margin-top: 17px;
+}
+
+.action-btn {
+    height: 46px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.action-btn:hover,
+.save-btn:hover,
+.complete-screening-btn:hover {
+    filter: brightness(0.94);
+}
+
+.action-btn svg {
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+}
+
+.call-btn {
+    background: #0669dc;
+}
+
+.skip-btn,
+.transfer-btn {
+    background: #52768f;
+}
+
+/* =========================================
+   10. STUDENT DETAILS
+========================================= */
+
+.details-card {
+    padding: 22px 20px 20px;
+}
+
+.details-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 21px;
+}
+
+.details-heading h3,
+.requirements-title {
+    font-size: 17px;
+}
+
+.details-heading svg {
+    color: #0870e9;
+    width: 17px;
+}
+
+.student-profile {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 17px;
+}
+
+.student-avatar {
+    width: 52px;
+    height: 52px;
+    background: #e5f1ff;
+    color: #0870e9;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+}
+
+.student-avatar svg {
+    width: 25px;
+    height: 25px;
+    stroke-width: 1.2;
+}
+
+.student-profile h3 {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.student-profile p,
+.student-profile small {
+    display: block;
+    color: #6985a5;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.details-card hr {
+    border: none;
+    border-top: 1px solid #edf1f5;
+    margin-bottom: 18px;
+}
+
+/* =========================================
+   11. MEDICAL REQUIREMENTS
+========================================= */
+
+.requirements-title {
+    margin-bottom: 11px;
+}
+
+.requirements {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin-bottom: 19px;
+}
+
+.requirements label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.requirements input {
+    display: none;
+}
+
+.check-icon {
+    width: 15px;
+    height: 15px;
+    border: 1px solid #08ba5c;
+    border-radius: 50%;
+    color: #08ba5c;
+    display: grid;
+    place-items: center;
+}
+
+.check-icon svg {
+    width: 10px;
+    height: 10px;
+}
+
+.requirements input:not(:checked) + .check-icon {
+    border-color: #aebdca;
+    color: transparent;
+}
+
+/* =========================================
+   12. STATUS AND NOTES
+========================================= */
+
+.status-section,
+.notes-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 17px;
+}
+
+.status-section label,
+.notes-section label {
+    font-size: 12px;
+}
+
+.status-section select {
+    width: fit-content;
+    max-width: 100%;
+    border: none;
+    border-radius: 5px;
+    background: #e3f7e9;
+    color: #00883c;
+    padding: 6px 10px;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.notes-section textarea {
+    width: 100%;
+    height: 68px;
+    resize: vertical;
+    border: 1px solid #d5e3f2;
+    border-radius: 6px;
+    padding: 12px;
+    color: #6985a5;
+    font-size: 12px;
+    line-height: 1.5;
+    outline: none;
+}
+
+.notes-section textarea:focus {
+    border-color: #0870e9;
+}
+
+/* =========================================
+   13. DETAILS BUTTONS
+========================================= */
+
+.details-actions {
+    display: grid;
+    grid-template-columns: 0.55fr 1fr;
+    gap: 10px;
+}
+
+.save-btn,
+.complete-screening-btn {
+    height: 37px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.save-btn {
+    background: #0669dc;
+}
+
+.complete-screening-btn {
+    background: #08b95a;
+}
+
+.complete-screening-btn svg {
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+}
+
+/* =========================================
+   14. RESPONSIVE
+========================================= */
+
+@media (max-width: 1050px) {
+    .console-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+    .sidebar {
+        width: 65px;
+    }
+
+    .nav-link span,
+    .sidebar-footer {
+        display: none;
+    }
+
+    .nav-link {
+        justify-content: center;
+        padding: 0;
+    }
+
+    .main-content {
+        margin-left: 65px;
+        padding: 90px 12px 20px;
+    }
+
+    .topbar {
+        padding: 0 12px;
+    }
+
+    .date-time,
+    .profile {
+        display: none;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .page-heading {
+        gap: 10px;
+    }
+
+    .student-table-header,
+    .student-row {
+        grid-template-columns: 1.5fr 0.8fr 0.65fr;
+        gap: 4px;
+        font-size: 10px;
+    }
+
+    .console-actions {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .call-btn {
+        grid-column: span 2;
+    }
+}

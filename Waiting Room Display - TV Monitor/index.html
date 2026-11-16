@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QBSEMS | Waiting Room Display</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- =================================
+         TOP HEADER
+    ================================== -->
+    <header class="tv-header">
+        <div class="brand">
+            <div class="logo-container">
+                <img src="ctulogo(5).jpg" alt="CTU Ginatilan Logo">
+            </div>
+            <div class="brand-text">
+                <h2>CTU – Ginatilan</h2>
+                <p>Extension Campus · School Enrollment System</p>
+            </div>
+        </div>
+
+        <div class="tv-header-right">
+            <span class="date-time" id="dateTime"></span>
+        </div>
+    </header>
+
+
+    <!-- =================================
+         MAIN DISPLAY CONTENT
+    ================================== -->
+    <main class="tv-main">
+
+        <div class="tv-title-bar">
+            <h1>Enrollment Queue · Now Serving</h1>
+            <span class="live-status"><span class="pulse-dot"></span> Live updates</span>
+        </div>
+
+        <!-- THREE OFFICE CARDS GRID -->
+        <div class="offices-grid">
+
+            <!-- REGISTRAR CARD -->
+            <div class="office-card registrar-card">
+                <div class="card-header">
+                    <i data-lucide="clipboard-list"></i>
+                    <span>REGISTRAR</span>
+                </div>
+                <div class="card-body">
+                    <small>Now Serving</small>
+                    <h1 id="regServing">R-003</h1>
+                    <div class="next-pill">
+                        Next <span id="regNext">R-004</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NURSE CARD -->
+            <div class="office-card nurse-card">
+                <div class="card-header">
+                    <i data-lucide="heart-pulse"></i>
+                    <span>NURSE</span>
+                </div>
+                <div class="card-body">
+                    <small>Now Serving</small>
+                    <h1 id="nurseServing">N-001</h1>
+                    <div class="next-pill">
+                        Next <span id="nurseNext">N-002</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MIS CARD -->
+            <div class="office-card mis-card">
+                <div class="card-header">
+                    <i data-lucide="monitor"></i>
+                    <span>MIS</span>
+                </div>
+                <div class="card-body">
+                    <small>Now Serving</small>
+                    <h1 id="misServing">M-002</h1>
+                    <div class="next-pill">
+                        Next <span id="misNext">M-003</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- ANNOUNCEMENT BANNER -->
+        <div class="announcement-banner">
+            <i data-lucide="volume-2"></i>
+            <span>Please wait for your number to be called. Thank you!</span>
+        </div>
+
+
+        <!-- FOOTER WAITING COUNTERS -->
+        <div class="tv-footer-stats">
+            <div class="footer-stat-item">
+                <i data-lucide="file-text"></i>
+                <div>
+                    <small>REGISTRAR</small>
+                    <strong id="regWaiting">5 waiting</strong>
+                </div>
+            </div>
+
+            <div class="footer-stat-item">
+                <i data-lucide="heart-pulse"></i>
+                <div>
+                    <small>NURSE</small>
+                    <strong id="nurseWaiting">3 waiting</strong>
+                </div>
+            </div>
+
+            <div class="footer-stat-item">
+                <i data-lucide="monitor"></i>
+                <div>
+                    <small>MIS</small>
+                    <strong id="misWaiting">4 waiting</strong>
+                </div>
+            </div>
+
+            <div class="footer-instruction">
+                <small>Prepare your requirements</small>
+                <p>Please have your ticket and medical documents ready before approaching the service counter.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
